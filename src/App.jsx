@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
+import Discography from "./components/Discography";
 import "./App.css";
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
         {currentPage === "Home" ? (
           <img className="image" src="https://live.staticflickr.com/65535/53726399750_65be5b34fa_o.jpg" />
         ) : (
-          <p>ciao</p>
+          <div>
+            <Discography />
+          </div>
         )}
       </div>
     </div>

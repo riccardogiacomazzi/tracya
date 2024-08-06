@@ -29,11 +29,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: solid red;
 }
 
 .main .vertical-navigation {
-  border: solid purple;
   min-width: 20%;
   width: 20%;
   height: 100%;
@@ -44,15 +42,50 @@
 }
 
 .main .main-content {
-  border: solid green;
   width: auto;
   height: 100%;
   width: auto;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: scroll;
+  overflow-x: hidden;
 }
+
 .main .main-content .image {
   max-width: 100%;
   max-height: 100%;
   width: 100%;
   height: 100%;
+}
+
+/* DISCOGRAPHY */
+.release {
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.image-container {
+  height: 100%;
+  padding: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid green;
+}
+
+.player-container {
+  flex-grow: 1;
+  height: 100%;
+  border: solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.release .image-release {
+  height: 75%;
 }
