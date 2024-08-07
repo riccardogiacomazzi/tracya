@@ -39,32 +39,46 @@ const Discography = () => {
                 <Box className="image-container">
                   <img onClick={() => handlePlayerOpen(index)} src={item.thumb} className="image-release" />
                   <br />
-                  <Typography sx={{ wordWrap: "break-word", overflowWrap: "break-word", whiteSpace: "normal" }}>
-                    <b>
-                      {item.artist} - {item.title}
-                    </b>
-                    <br />
-                    {item.year}
-                  </Typography>
                 </Box>
-                <Box className="info-container">
-                  <div>
-                    {item.tracklist.map((track, index) => (
-                      <Typography align="left" key={index}>
-                        <b>{track.title}</b> {track.duration}
-                      </Typography>
-                    ))}
-                  </div>
-                  <div>
-                    <Typography align="right">
-                      {item.styles.map((style, index) => (
-                        <span key={index}>{style} </span>
+
+                <Box className="release-info">
+                  <Box>
+                    <Typography sx={{ wordWrap: "break-word", overflowWrap: "break-word", whiteSpace: "normal" }}>
+                      <b>
+                        {item.artist} - {item.title}
+                      </b>
+                      <br />
+                      {item.year}
+                    </Typography>
+                  </Box>
+                  <Box className="info-container">
+                    <div>
+                      {item.tracklist.map((track, trackIndex) => (
+                        <Typography
+                          sx={{
+                            ":hover": {
+                              cursor: "pointer",
+                            },
+                          }}
+                          align="left"
+                          key={trackIndex}
+                          onClick={() => handlePlayerOpen(index)}
+                        >
+                          <b>{track.title}</b> {track.duration}
+                        </Typography>
                       ))}
-                    </Typography>
-                    <Typography align="right">
-                      <b>{item.label}</b>
-                    </Typography>
-                  </div>
+                    </div>
+                    <div>
+                      <Typography align="right">
+                        {item.styles.map((style, index) => (
+                          <span key={index}>{style} </span>
+                        ))}
+                      </Typography>
+                      <Typography align="right">
+                        <i>{item.label}</i>
+                      </Typography>
+                    </div>
+                  </Box>
                 </Box>
                 <Box className="button-container"></Box>
               </>

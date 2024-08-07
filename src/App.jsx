@@ -9,7 +9,7 @@ import Info from "./components/Info";
 import "./App.css";
 
 function App() {
-  const pages = ["Home", "Discography", "Live Sets", "Visual Art", "Archive", "Info"];
+  const pages = ["Discography", "Live Sets", "Visual Art", "Archive", "Info"];
   const [currentPage, setCurrentPage] = useState("Home");
 
   useEffect(() => {
@@ -21,6 +21,19 @@ function App() {
       <CssBaseline>
         <div className="main">
           <div className="vertical-navigation">
+            <Typography
+              align="left"
+              fontFamily={"Agnes"}
+              fontSize={"110px"}
+              sx={{
+                flexGrow: 1,
+                writingMode: "vertical-rl",
+                textOrientation: "upright",
+              }}
+              onClick={() => setCurrentPage("Home")}
+            >
+              Tracya
+            </Typography>
             {pages.map((item, index) => (
               <Typography align="left" onClick={() => setCurrentPage(item)} key={index}>
                 {item.toLocaleUpperCase()}

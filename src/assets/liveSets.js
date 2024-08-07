@@ -17,7 +17,7 @@ const liveSets = [
   },
   {
     url: "https://www.youtube.com/watch?v=8aidSjMR6Bk&t=633s&ab_channel=H%C3%96RBERLIN",
-    event: "HÖR Berlin",
+    event: "HÖR",
     location: "Berlin",
     date: "14.09.2021",
     equipment: ["Octatrack", "Machinedrum", "MicroQ"],
@@ -25,7 +25,7 @@ const liveSets = [
   },
   {
     url: "https://www.youtube.com/watch?v=mTELDThvr_4&t=1696s&ab_channel=H%C3%96RBERLIN",
-    event: "HÖR Berlin",
+    event: "HÖR",
     location: "Berlin",
     date: "27.01.2022",
     equipment: ["Octatrack", "Machinedrum", "MicroQ"],
