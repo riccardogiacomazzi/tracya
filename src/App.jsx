@@ -14,8 +14,10 @@ function App() {
   return (
     <div className="main">
       <div className="vertical-navigation">
-        {pages.map((item) => (
-          <Typography onClick={() => setCurrentPage(item)}>{item}</Typography>
+        {pages.map((item, index) => (
+          <Typography align="left" onClick={() => setCurrentPage(item)} key={index}>
+            {item}
+          </Typography>
         ))}
       </div>
       <div className="main-content">
