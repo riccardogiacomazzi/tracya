@@ -1,16 +1,15 @@
+@font-face {
+  font-family: "Heming";
+  src: url("./fonts/HemingVariable.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 #root {
   max-width: 95vw;
   max-height: 95vh;
   margin: 0 auto;
   text-align: center;
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
 
 /* components */
@@ -136,3 +135,5 @@
   display: flex;
   justify-content: space-between;
 }
+
+/* INFO */

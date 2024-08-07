@@ -18,13 +18,7 @@ const LiveSets = () => {
             <Typography align="left">{item.event}</Typography>
             <Typography align="right">{item.location}</Typography>
           </div>
-          <ReactPlayer
-            url={item.url}
-            width="100%"
-            height="80%"
-            playing={false} // Controls if the player should play automatically
-            controls={true} // Show controls
-          />
+          <ReactPlayer url={item.url} width="100%" height="80%" playing={false} controls={true} />
           <div className="info">
             <Typography align="left">Equipment:</Typography>
             <Typography align="right">
