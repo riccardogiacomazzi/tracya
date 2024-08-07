@@ -24,7 +24,7 @@ function App() {
             <Typography
               align="left"
               fontFamily={"Agnes"}
-              fontSize={"110px"}
+              fontSize={"90px"}
               sx={{
                 flexGrow: 1,
                 writingMode: "vertical-rl",

@@ -43,7 +43,13 @@ const Discography = () => {
 
                 <Box className="release-info">
                   <Box>
-                    <Typography sx={{ wordWrap: "break-word", overflowWrap: "break-word", whiteSpace: "normal" }}>
+                    <Typography
+                      sx={{
+                        wordWrap: "break-word",
+                        overflowWrap: "break-word",
+                        whiteSpace: "normal",
+                      }}
+                    >
                       <b>
                         {item.artist} - {item.title}
                       </b>
@@ -51,8 +57,8 @@ const Discography = () => {
                       {item.year}
                     </Typography>
                   </Box>
-                  <Box className="info-container">
-                    <div>
+                  <Box className="info-container-grid">
+                    <div className="item">
                       {item.tracklist.map((track, trackIndex) => (
                         <Typography
                           sx={{
@@ -68,7 +74,7 @@ const Discography = () => {
                         </Typography>
                       ))}
                     </div>
-                    <div>
+                    <div className="item">
                       <Typography align="right">
                         {item.styles.map((style, index) => (
                           <span key={index}>{style} </span>
