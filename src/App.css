@@ -88,7 +88,6 @@
   max-width: 225px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .info-container {
@@ -97,7 +96,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 1fr;
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .player-container {
@@ -118,4 +117,22 @@
 }
 .release .image-release:hover {
   cursor: pointer;
+}
+
+/* LIVESETS */
+.live-grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.grid-item {
+  padding: 10px;
+}
+
+.grid-item .info {
+  display: flex;
+  justify-content: space-between;
 }

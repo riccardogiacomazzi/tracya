@@ -11,7 +11,7 @@ const Discography = () => {
   const [playerOpen, setPlayerOpen] = useState([]);
 
   useEffect(() => {
-    const fetch = async () => {
+    const fetch = () => {
       setReleases(discography);
     };
 
@@ -73,7 +73,6 @@ const Discography = () => {
                 <Box className="player-container">
                   {item.player && (
                     <ReactPlayer
-                      style={{ background: "none" }}
                       url={item.player}
                       width="100%"
                       height="100%"

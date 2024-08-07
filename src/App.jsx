@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
 import Discography from "./components/Discography";
+import LiveSets from "./components/LiveSets";
 import "./App.css";
 
 function App() {
@@ -21,13 +22,11 @@ function App() {
         ))}
       </div>
       <div className="main-content">
-        {currentPage === "Home" ? (
+        {currentPage === "Home" && (
           <img className="image" src="https://live.staticflickr.com/65535/53726399750_65be5b34fa_o.jpg" />
-        ) : (
-          <div>
-            <Discography />
-          </div>
         )}
+        {currentPage === "Discography" && <Discography />}
+        {currentPage === "Live Sets" && <LiveSets />}
       </div>
     </div>
   );
