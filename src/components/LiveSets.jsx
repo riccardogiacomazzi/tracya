@@ -18,7 +18,14 @@ const LiveSets = () => {
             <Typography align="left">{item.event}</Typography>
             <Typography align="right">{item.location}</Typography>
           </div>
-          <ReactPlayer url={item.url} width="100%" height="80%" playing={false} controls={true} />
+          <ReactPlayer
+            style={{ padding: "5px" }}
+            url={item.url}
+            width="100%"
+            height="80%"
+            playing={false}
+            controls={true}
+          />
           <div className="info">
             <Typography align="left">Equipment:</Typography>
             <Typography align="right">

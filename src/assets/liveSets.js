@@ -12,7 +12,7 @@ const liveSets = [
     event: "Studio Rehearsal",
     location: "Padova",
     date: "06.01.2021",
-    equipment: ["Octatrack", "Machinedrum", "Ambika"],
+    equipment: ["Octatrack", "Machinedrum", "Ambika", "TouchDesigner"],
     style: ["Techno", "Electro"],
   },
   {
