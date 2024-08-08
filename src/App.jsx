@@ -36,25 +36,33 @@ function App() {
       <CssBaseline>
         <div className="main">
           <div className="vertical-navigation">
-            <Typography
-              align="left"
-              fontFamily={"Agnes"}
-              fontSize={size.width > 700 ? "90px" : "30px"}
-              sx={{
-                flexGrow: 1,
-                writingMode: size.width > 700 ? "vertical-rl" : "",
-                textOrientation: "upright",
-              }}
-              onClick={() => setCurrentPage("Home")}
-            >
-              Tracya
-            </Typography>
-
-            {pages.map((item, index) => (
-              <Typography align="left" onClick={() => setCurrentPage(item)} key={index}>
-                {item.toLocaleUpperCase()}
+            <div className="title-container">
+              <Typography
+                align="left"
+                fontFamily={"Agnes"}
+                fontSize={size.width > 700 ? "60px" : "30px"}
+                sx={{
+                  writingMode: size.width > 700 ? "vertical-rl" : "",
+                  textOrientation: "upright",
+                }}
+                onClick={() => setCurrentPage("Home")}
+              >
+                Tracya
               </Typography>
-            ))}
+            </div>
+
+            <div className="pages-buttons-container">
+              {pages.map((item, index) => (
+                <Typography
+                  fontSize={size.width > 700 && "13px"}
+                  align={"center"}
+                  onClick={() => setCurrentPage(item)}
+                  key={index}
+                >
+                  {item.toLocaleUpperCase()}
+                </Typography>
+              ))}
+            </div>
           </div>
           <div className="main-content">
             {currentPage === "Home" && (

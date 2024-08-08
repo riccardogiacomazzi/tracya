@@ -54,6 +54,7 @@ const Discography = ({ size }) => {
                           wordWrap: "break-word",
                           overflowWrap: "break-word",
                           whiteSpace: "normal",
+                          marginTop: size.width < 700 && "10px",
                         }}
                       >
                         <b>
@@ -64,7 +65,7 @@ const Discography = ({ size }) => {
                       </Typography>
                     </Box>
                     <Box className="info-container-grid">
-                      <div className="item">
+                      <div className="item-tracklist">
                         {item.tracklist.map((track, trackIndex) => (
                           <Typography
                             sx={{
@@ -80,13 +81,15 @@ const Discography = ({ size }) => {
                           </Typography>
                         ))}
                       </div>
-                      <div className="item">
-                        <Typography align="right">
-                          {item.styles.map((style, index) => (
-                            <span key={index}>{style} </span>
-                          ))}
-                        </Typography>
-                        <Typography align="right">
+                      <div className="item-genre">
+                        <div>
+                          <Typography align="right">
+                            {item.styles.map((style, index) => (
+                              <span key={index}>{style} </span>
+                            ))}
+                          </Typography>
+                        </div>
+                        <Typography align="right" sx={{ marginTop: "20px" }}>
                           <i>{item.label}</i>
                         </Typography>
                       </div>

@@ -16,6 +16,7 @@
     "@mui/material": "^5.16.6",
     "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.7.3",
+    "firebase": "^10.12.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-player": "^2.16.0",
