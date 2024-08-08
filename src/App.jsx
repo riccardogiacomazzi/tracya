@@ -1,20 +1,35 @@
 import { useState, useEffect } from "react";
+import { useWindowSize } from "@uidotdev/usehooks";
 import { Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./theme";
 import Discography from "./components/Discography";
 import LiveSets from "./components/LiveSets";
+import VisualArt from "./components/VisualArt";
 import Info from "./components/Info";
+import FlickrAPI from "./services/flickrService";
 import "./App.css";
 
 function App() {
   const pages = ["Discography", "Live Sets", "Visual Art", "Archive", "Info"];
   const [currentPage, setCurrentPage] = useState("Home");
+  const [itemData, setItemData] = useState([]);
 
   useEffect(() => {
     console.log(currentPage);
   }, [currentPage]);
+
+  useEffect(() => {
+    const flickrService = async () => {
+      const data = await FlickrAPI.FlickrPhotos();
+      setItemData(data.itemData);
+    };
+
+    flickrService();
+  }, []);
+
+  const size = useWindowSize();
 
   return (
     <ThemeProvider theme={theme}>
@@ -46,6 +61,7 @@ function App() {
             )}
             {currentPage === "Discography" && <Discography />}
             {currentPage === "Live Sets" && <LiveSets />}
+            {currentPage === "Visual Art" && <VisualArt itemData={itemData} size={size} />}
             {currentPage === "Info" && <Info />}
           </div>
         </div>
