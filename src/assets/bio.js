@@ -15,6 +15,7 @@ const bio = {
     { name: "SoundCloud", link: "https://soundcloud.com/tracya0000" },
     { name: "Discogs", link: "https://www.discogs.com/artist/4772215-Tracya" },
     { name: "Mail", link: "mailto:tracya0000@gmail.com" },
+    { name: "Web Design", link: "https://github.com/riccardogiacomazzi" },
   ],
 };
 

@@ -61,6 +61,7 @@ const FlickrPhotos = async () => {
       }
 
       const results = await Promise.all(promises);
+
       itemData.push(...results);
     } catch (error) {
       console.log(error.message);

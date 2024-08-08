@@ -12,7 +12,7 @@ import FlickrAPI from "./services/flickrService";
 import "./App.css";
 
 function App() {
-  const pages = ["Discography", "Live Sets", "Visual Art", "Archive", "Info"];
+  const pages = ["Discography", "Live Sets", "Visual Art", "Info"];
   const [currentPage, setCurrentPage] = useState("Home");
   const [itemData, setItemData] = useState([]);
 
@@ -39,16 +39,17 @@ function App() {
             <Typography
               align="left"
               fontFamily={"Agnes"}
-              fontSize={"90px"}
+              fontSize={size.width > 700 ? "90px" : "30px"}
               sx={{
                 flexGrow: 1,
-                writingMode: "vertical-rl",
+                writingMode: size.width > 700 ? "vertical-rl" : "",
                 textOrientation: "upright",
               }}
               onClick={() => setCurrentPage("Home")}
             >
               Tracya
             </Typography>
+
             {pages.map((item, index) => (
               <Typography align="left" onClick={() => setCurrentPage(item)} key={index}>
                 {item.toLocaleUpperCase()}
@@ -59,7 +60,8 @@ function App() {
             {currentPage === "Home" && (
               <img className="image" src="https://live.staticflickr.com/65535/53726399750_65be5b34fa_o.jpg" />
             )}
-            {currentPage === "Discography" && <Discography />}
+
+            {currentPage === "Discography" && <Discography size={size} />}
             {currentPage === "Live Sets" && <LiveSets />}
             {currentPage === "Visual Art" && <VisualArt itemData={itemData} size={size} />}
             {currentPage === "Info" && <Info />}

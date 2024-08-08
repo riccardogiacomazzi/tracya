@@ -75,11 +75,6 @@ const VisualArt = ({ itemData, size }) => {
                 </ImageListItem>
               ))}
             </ImageList>
-
-            {/* Opaque bottom box with tag and nav buttons - ONLY MOBILE */}
-            <Box className="bottom-fixed-box">
-              <Typography color={"white"}>{item.tag}</Typography>
-            </Box>
           </Box>
         );
       })}

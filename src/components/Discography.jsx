@@ -6,7 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import { useState, useEffect } from "react";
 
-const Discography = () => {
+const Discography = ({ size }) => {
   const [releases, setReleases] = useState([]);
   const [playerOpen, setPlayerOpen] = useState([]);
   const [imageLoad, setImageLoad] = useState(false);
@@ -103,7 +103,7 @@ const Discography = () => {
                         width="100%"
                         height="100%"
                         playing={false} // Controls if the player should play automatically
-                        controls={false} // Show controls
+                        controls={size.width > 700 ? false : true} // Show controls
                       />
                     )}
                   </Box>
@@ -117,13 +117,15 @@ const Discography = () => {
             </Box>
           ))}
       </div>
-      <Box className="disc-img-container">
-        <img
-          className={`disc-img ${imageLoad ? "loaded" : ""}`}
-          src="https://live.staticflickr.com/65535/53499079679_09e89593e7_o.jpg"
-          onLoad={handleImageLoad}
-        />
-      </Box>
+      {size.width > 700 && (
+        <Box className="disc-img-container">
+          <img
+            className={`disc-img ${imageLoad ? "loaded" : ""}`}
+            src="https://live.staticflickr.com/65535/53499079679_09e89593e7_o.jpg"
+            onLoad={handleImageLoad}
+          />
+        </Box>
+      )}
     </div>
   );
 };
