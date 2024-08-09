@@ -8,7 +8,7 @@ const liveSets = [
     style: ["Techno", "Dub"],
   },
   {
-    url: "https://www.youtube.com/watch?v=dKVxtjXD_OE&ab_channel=ParallelHorizon",
+    url: "https://youtu.be/dKVxtjXD_OE?si=QgaHq6ycjQeGQACg",
     event: "Studio Rehearsal",
     location: "Padova",
     date: "06.01.2021",
@@ -16,7 +16,7 @@ const liveSets = [
     style: ["Techno", "Electro"],
   },
   {
-    url: "https://www.youtube.com/watch?v=8aidSjMR6Bk&t=633s&ab_channel=H%C3%96RBERLIN",
+    url: "https://www.youtube.com/live/8aidSjMR6Bk?si=XhZUF5iODqM9k8O4",
     event: "HÖR",
     location: "Berlin",
     date: "14.09.2021",
@@ -24,7 +24,7 @@ const liveSets = [
     style: ["Techno", "Electro"],
   },
   {
-    url: "https://www.youtube.com/watch?v=mTELDThvr_4&t=1696s&ab_channel=H%C3%96RBERLIN",
+    url: "https://www.youtube.com/live/mTELDThvr_4?si=MTUc5Bb9aZPHJ6ts",
     event: "HÖR",
     location: "Berlin",
     date: "27.01.2022",
@@ -41,7 +41,7 @@ const liveSets = [
   },
 
   {
-    url: "https://www.youtube.com/watch?v=9K5xYQVzjSI&t=16s&ab_channel=RioneLiminale",
+    url: "https://youtu.be/9K5xYQVzjSI?si=e-GDbtHq8jrssC6K",
     event: "Radura Festival",
     location: "Napoli Area",
     date: "02.09.2023",
