@@ -38,7 +38,7 @@ function App() {
                 <Typography
                   align="left"
                   fontFamily={"Agnes"}
-                  fontSize={size.width > 700 ? "60px" : "30px"}
+                  fontSize={size.width > 700 ? "70px" : "30px"}
                   sx={{
                     writingMode: size.width > 700 ? "vertical-rl" : "",
                     textOrientation: "upright",
@@ -52,7 +52,7 @@ function App() {
 
               <div className="pages-buttons-container">
                 {pages.map((item, index) => (
-                  <Typography fontSize={size.width > 700 && "13px"} align={"center"} key={index}>
+                  <Typography fontSize={size.width > 700 && "14px"} align={"center"} key={index}>
                     <Link to={`/${item.replace(/ /g, "_").toLowerCase()}`} style={{ color: "black" }}>
                       {item.toLocaleUpperCase()}
                     </Link>
