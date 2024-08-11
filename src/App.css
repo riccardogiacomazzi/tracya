@@ -439,6 +439,7 @@
   height: auto;
   width: auto;
   object-fit: cover;
+  padding-bottom: 5px;
 }
 
 .image-down {
@@ -451,6 +452,7 @@
   flex-direction: column;
   justify-content: center;
   object-fit: fill;
+  border: solid;
 }
 
 /* INFO */

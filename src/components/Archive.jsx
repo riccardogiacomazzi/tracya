@@ -1,14 +1,24 @@
 import archive from "../assets/archive";
 import P5Wrapper from "../assets/P5Wrapper";
 import sketch from "../assets/sketch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Archive = () => {
+  const [eventOpen, setEventOpen] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState();
 
+  useEffect(() => {
+    const elementOpen = archive.map((item) => false);
+    setEventOpen(elementOpen);
+  }, []);
+
   const handleEventSelect = (index) => {
-    const events = [...archive];
-    setSelectedEvent(events[index]);
+    console.log("selected:", index);
+    const open = [...eventOpen];
+    eventOpen[index] = !eventOpen[index];
+    console.log(eventOpen);
+
+    setSelectedEvent(archive[index]);
   };
 
   return (
@@ -18,7 +28,7 @@ const Archive = () => {
           <li key={index} onClick={() => handleEventSelect(index)}>
             {item.date} - {item.type} @{item.eventName}
             <br />
-            {selectedEvent && selectedEvent.date === item.date && (
+            {eventOpen[index] === true && (
               <>
                 {item.location.venue && item.location.venue} - {item.location.city}
                 <br /> {item.otherArtist.length > 0 && `w/ ${item.otherArtist.map((artist) => artist)} `}
@@ -28,7 +38,11 @@ const Archive = () => {
         ))}
       </div>
       <div className="imgs-container">
-        {/* <div className="image-up">{selectedEvent && <img src={selectedEvent.img} className="img" />}</div> */}
+        {/* {selectedEvent && selectedEvent.img.length > 0 && (
+          <div className="image-up">
+            <img src={selectedEvent.img} className="img" />
+          </div>
+        )} */}
         <div className="image-down">
           <P5Wrapper sketch={sketch} />
         </div>
