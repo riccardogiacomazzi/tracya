@@ -19,7 +19,7 @@ const LiveSets = () => {
             <Typography align="right">{item.location}</Typography>
           </div>
           <ReactPlayer
-            style={{ padding: "5px" }}
+            style={{ paddingLeft: "5px", paddingRight: "5px" }}
             url={item.url}
             width="100%"
             height="80%"

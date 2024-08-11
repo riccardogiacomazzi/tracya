@@ -18,8 +18,6 @@ const Info = () => {
 
   // image loading fade in CSS
   const handleImageLoad = () => {
-    console.log("chiamato load");
-
     setImageLoad(true);
   };
 

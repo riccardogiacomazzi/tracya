@@ -6,6 +6,7 @@ const VisualArt = ({ itemData, size }) => {
   const [indexShow, setIndexShow] = useState({ min: 0, max: 1 });
   const [selectedImage, setSelectedImage] = useState();
   const [zoom, setZoom] = useState(false);
+  const [imageLoad, setImageLoad] = useState([]);
 
   const visibleTags = ["TouchDesigner"];
 
@@ -95,7 +96,7 @@ const VisualArt = ({ itemData, size }) => {
             {size.width > 700 && (
               <img
                 className={zoom === false ? "image-big" : "image-big-zoom-works"}
-                style={{ margin: " auto" }}
+                style={{ marginLeft: " auto", marginRight: "auto" }}
                 onClick={handleClickZoom}
                 srcSet={`${selectedImage.original}`}
                 src={`${selectedImage.original}`}
