@@ -9,12 +9,13 @@ import Home from "./components/Home";
 import Discography from "./components/Discography";
 import LiveSets from "./components/LiveSets";
 import VisualArt from "./components/VisualArt";
+import Archive from "./components/Archive";
 import Info from "./components/Info";
 import FlickrAPI from "./services/flickrService";
 import "./App.css";
 
 function App() {
-  const pages = ["Discography", "Live Sets", "Visual Art", "Info"];
+  const pages = ["Discography", "Live Sets", "Visual Art", "Archive", "Info"];
   const [itemData, setItemData] = useState([]);
 
   useEffect(() => {
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/discography" element={<Discography size={size} />} />
                 <Route path="/live_sets" element={<LiveSets />} />
                 <Route path="/visual_art" element={<VisualArt itemData={itemData} size={size} />} />
+                <Route path="/archive" element={<Archive />} />
                 <Route path="/info" element={<Info />} />
               </Routes>
             </div>

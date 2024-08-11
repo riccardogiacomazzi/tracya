@@ -42,9 +42,6 @@ const VisualArt = ({ itemData, size }) => {
 
   //selection of image to display
   const handleSelectImage = (item) => {
-    if (!selectedImage) {
-      setZoom(true);
-    } else setZoom(false);
     setSelectedImage(item);
   };
 
@@ -86,17 +83,12 @@ const VisualArt = ({ itemData, size }) => {
           <Box className="visual-info">
             <Typography align="left">{bio.visualArt}</Typography>
           </Box>
-          <Box
-            className="big-photo-container-works"
-            sx={{
-              cursor: zoom === true ? "zoom-out" : "zoom-in",
-            }}
-          >
+          <Box className="big-photo-container-works">
             {/* conditionally renderes big image clicked */}
             {size.width > 700 && (
               <img
                 className={zoom === false ? "image-big" : "image-big-zoom-works"}
-                style={{ marginLeft: " auto", marginRight: "auto" }}
+                style={{ marginLeft: " auto", marginRight: "auto", cursor: zoom === true ? "zoom-out" : "zoom-in" }}
                 onClick={handleClickZoom}
                 srcSet={`${selectedImage.original}`}
                 src={`${selectedImage.original}`}
