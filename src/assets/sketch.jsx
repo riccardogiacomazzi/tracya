@@ -1,5 +1,5 @@
-// Sketch.js
 const sketch = (p5) => {
+  let seed = Math.random() * 9999;
   let f = 0;
   let p = [];
   let colors1 = "a4c9cc-fafdff-5aa4ae-f9f8f6-663d74-544063".split("-").map((a) => "#" + a);
@@ -8,6 +8,7 @@ const sketch = (p5) => {
   const pNum = p5.random(500, 2000);
 
   p5.setup = () => {
+    p5.pixelDensity(1);
     p5.frameRate(30);
     const a = (p5.windowWidth, p5.windowHeight);
     p5.createCanvas(a, a);
@@ -27,12 +28,14 @@ const sketch = (p5) => {
 
       q.add(-p5.sin(b), p5.cos(b));
       p5.strokeWeight(p5.random(0, 0.2));
-      if (b > p5.PI / 2) {
-        p5.stroke(p5.random(colors1));
-        p5.stroke(p5.random(colors2));
-      } else {
-        p5.stroke(p5.random(colors2));
-        p5.stroke(p5.random(colors1));
+      if (seed) {
+        if (b > p5.PI / 2) {
+          p5.stroke(p5.random(colors1));
+          p5.stroke(p5.random(colors2));
+        } else {
+          p5.stroke(p5.random(colors2));
+          p5.stroke(p5.random(colors1));
+        }
       }
       p5.point(q.x, q.y);
     }
@@ -45,7 +48,7 @@ const sketch = (p5) => {
 
   p5.windowResized = () => {
     p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-    p5.background(0); // Clear the background on resize
+    p5.background(p5.random(colorsBg));
   };
 };
 
