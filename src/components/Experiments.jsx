@@ -2,7 +2,7 @@ import P5Wrapper from "../assets/P5Wrapper";
 import sketch from "../assets/sketch";
 import { useState } from "react";
 
-const Experiments = () => {
+const Experiments = ({}) => {
   const [canvasKey, setCanvasKey] = useState(0);
 
   const handleImageClick = () => {

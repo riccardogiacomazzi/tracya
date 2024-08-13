@@ -17,6 +17,7 @@ import "./App.css";
 
 function App() {
   const pages = ["Discography", "Live Sets", "Visual Art", "Info"];
+  const [selectedPage, setSelectedPage] = useState();
   const [itemData, setItemData] = useState([]);
 
   useEffect(() => {
@@ -29,6 +30,11 @@ function App() {
   }, []);
 
   const size = useWindowSize();
+
+  const handlePageSelect = (item) => {
+    console.log(item);
+    setSelectedPage(item);
+  };
 
   return (
     <Router>
@@ -44,7 +50,9 @@ function App() {
                   sx={{
                     writingMode: size.width > 700 ? "vertical-rl" : "",
                     textOrientation: "upright",
+                    outline: "none",
                   }}
+                  onClick={() => setSelectedPage()}
                 >
                   <Link to={"/"} style={{ color: "black" }}>
                     Tracya
@@ -54,8 +62,18 @@ function App() {
 
               <div className="pages-buttons-container">
                 {pages.map((item, index) => (
-                  <Typography fontSize={size.width > 700 && "14px"} align={"center"} key={index}>
-                    <Link to={`/${item.replace(/ /g, "_").toLowerCase()}`} style={{ color: "black" }}>
+                  <Typography
+                    onClick={() => handlePageSelect(item)}
+                    fontSize={size.width > 700 && "14px"}
+                    align={"center"}
+                    key={index}
+                    style={{ textDecoration: selectedPage === item && "underline" }}
+                  >
+                    <Link
+                      to={`/${item.replace(/ /g, "_").toLowerCase()}`}
+                      style={{ color: "black" }}
+                      className="link-outlines"
+                    >
                       {item.toLocaleUpperCase()}
                     </Link>
                   </Typography>
@@ -70,7 +88,7 @@ function App() {
                 <Route path="/visual_art" element={<VisualArt itemData={itemData} size={size} />} />
                 <Route path="/archive" element={<Archive />} />
                 <Route path="/info" element={<Info />} />
-                <Route path="/xyz" element={<Experiments />} />
+                <Route path="/xyz" element={<Experiments size={size} />} />
               </Routes>
             </div>
           </div>
