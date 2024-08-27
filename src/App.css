@@ -310,6 +310,10 @@
   height: 100%;
 }
 
+.release .image-release:hover {
+  opacity: 0.5;
+}
+
 @media (max-width: 700px) {
   .release .image-release {
     /* margin-top: 5px; */
