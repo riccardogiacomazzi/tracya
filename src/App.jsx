@@ -32,7 +32,6 @@ function App() {
   const size = useWindowSize();
 
   const handlePageSelect = (item) => {
-    console.log(item);
     setSelectedPage(item);
   };
 
