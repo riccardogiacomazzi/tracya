@@ -318,8 +318,6 @@
 
 @media (max-width: 700px) {
   .release .image-release {
-    /* margin-top: 5px; */
-    width: 70%;
     height: auto;
   }
 }
