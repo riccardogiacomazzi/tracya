@@ -42,13 +42,20 @@ const Discography = ({ size }) => {
             <Box key={index} className="release">
               {playerOpen[index] === false ? (
                 <>
-                  <Box className="image-container">
+                  {size.width < 700 && (
+                    <Typography>
+                      <b>
+                        {item.artist} - {item.title}
+                      </b>
+                    </Typography>
+                  )}
+                  <div className="image-container">
                     <img onClick={() => handlePlayerOpen(index)} src={item.thumb} className="image-release" />
                     <br />
-                  </Box>
+                  </div>
 
                   <Box className="release-info">
-                    <Box>
+                    <div>
                       <Typography
                         sx={{
                           wordWrap: "break-word",
@@ -57,13 +64,17 @@ const Discography = ({ size }) => {
                           marginTop: size.width < 700 && "10px",
                         }}
                       >
-                        <b>
-                          {item.artist} - {item.title}
-                        </b>
-                        <br />
+                        {size.width > 700 && (
+                          <>
+                            <b>
+                              {item.artist} - {item.title}
+                            </b>
+                            <br />
+                          </>
+                        )}
                         {item.year}
                       </Typography>
-                    </Box>
+                    </div>
                     <Box className="info-container-grid">
                       <div className="item-tracklist">
                         {item.tracklist.map((track, trackIndex) => (
