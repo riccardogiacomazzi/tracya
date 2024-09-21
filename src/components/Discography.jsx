@@ -4,12 +4,15 @@ import discography from "../assets/discography";
 import { Typography, Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Discography = ({ size }) => {
   const [releases, setReleases] = useState([]);
   const [playerOpen, setPlayerOpen] = useState([]);
   const [imageLoad, setImageLoad] = useState(false);
+
+  const [height, setHeight] = useState([]);
+  const refs = useRef([]);
 
   useEffect(() => {
     const fetch = () => {
@@ -23,6 +26,21 @@ const Discography = ({ size }) => {
     const updatedPlayer = releases.map(() => false);
     setPlayerOpen(updatedPlayer);
   }, [releases]);
+
+  // set .release div height
+  useEffect(() => {
+    if (refs.current.length > 0 && height.length === 0) {
+      setTimeout(() => {
+        const newHeight = refs.current.map((ref) => {
+          if (ref) {
+            return ref.offsetHeight;
+          }
+          return 0;
+        });
+        setHeight(newHeight);
+      }, 100);
+    }
+  }, [releases, height]);
 
   const handlePlayerOpen = (index) => {
     const updatedPlayer = [...playerOpen];
@@ -39,7 +57,14 @@ const Discography = ({ size }) => {
       <div className="disc-release-container">
         {releases &&
           releases.map((item, index) => (
-            <Box key={index} className="release">
+            <div
+              key={index}
+              className="release"
+              ref={(el) => (refs.current[index] = el)}
+              style={{
+                height: height.length === releases.length && `${height[index]}px`,
+              }}
+            >
               {playerOpen[index] === false ? (
                 <>
                   {size.width < 700 && (
@@ -128,7 +153,7 @@ const Discography = ({ size }) => {
                   </Box>
                 </>
               )}
-            </Box>
+            </div>
           ))}
       </div>
       {size.width > 700 && (

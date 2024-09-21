@@ -220,7 +220,6 @@
 
 @media (max-width: 700px) {
   .release {
-    max-height: 90vh;
     height: auto;
     width: 95vw;
     flex-direction: column;
