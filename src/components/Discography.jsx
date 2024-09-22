@@ -63,6 +63,8 @@ const Discography = ({ size }) => {
               ref={(el) => (refs.current[index] = el)}
               style={{
                 height: height.length === releases.length && `${height[index]}px`,
+                minHeight: playerOpen[index] && height.length === releases.length && height[index] < 460 && "500px",
+                transition: "min-height 0.5s ease",
               }}
             >
               {playerOpen[index] === false ? (
