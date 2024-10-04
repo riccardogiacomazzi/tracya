@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import bio from "../assets/bio";
+import { Link } from "react-router-dom";
 
 const Info = () => {
   const [imageLoad, setImageLoad] = useState(false);
@@ -23,33 +24,38 @@ const Info = () => {
 
   return (
     <div className="info-page">
-      <img
-        src={bio.pics[0].url}
-        className={`info-img ${imageLoad ? "loaded" : ""}`}
-        loading="lazy"
-        onLoad={handleImageLoad}
-      />
+      <Link to={"/archive"}>
+        <img
+          src={bio.pics[0].url}
+          className={`info-img ${imageLoad ? "loaded" : ""}`}
+          loading="lazy"
+          onLoad={handleImageLoad}
+        />
+      </Link>
       <div className="info-text">
         <Typography fontFamily={"Heming"}>
           {bio.text}
           <br />
           <br />
           <div className="contacts-container">
-            {bio.contacts.map((item) => (
-              <div>
+            {bio.contacts.map((item, index) => (
+              <div key={index}>
                 <a href={item.link}>{item.name}</a>
               </div>
             ))}
+            <br />
           </div>
         </Typography>
       </div>
 
-      <img
-        src={bio.pics[1].url}
-        className={`info-img ${imageLoad ? "loaded" : ""}`}
-        loading="lazy"
-        onLoad={handleImageLoad}
-      />
+      <Link to={"/archive"}>
+        <img
+          src={bio.pics[1].url}
+          className={`info-img ${imageLoad ? "loaded" : ""}`}
+          loading="lazy"
+          onLoad={handleImageLoad}
+        />
+      </Link>
     </div>
   );
 };

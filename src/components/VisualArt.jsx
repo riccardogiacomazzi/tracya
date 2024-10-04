@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, Component } from "react";
-import { Box, Button, Typography, ImageList, ImageListItem } from "@mui/material";
+import { Box, Typography, ImageList, ImageListItem } from "@mui/material";
 import bio from "../assets/bio";
 
 const VisualArt = ({ itemData, size }) => {
