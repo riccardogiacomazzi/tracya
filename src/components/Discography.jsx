@@ -38,7 +38,7 @@ const Discography = ({ size }) => {
           return 0;
         });
         setHeight(newHeight);
-      }, 100);
+      }, 500);
     }
   }, [releases, height]);
 

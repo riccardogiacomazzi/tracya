@@ -6,7 +6,6 @@ const VisualArt = ({ itemData, size }) => {
   const [indexShow, setIndexShow] = useState({ min: 0, max: 1 });
   const [selectedImage, setSelectedImage] = useState();
   const [zoom, setZoom] = useState(false);
-  const [imageLoad, setImageLoad] = useState([]);
 
   const visibleTags = ["TouchDesigner"];
 
@@ -43,6 +42,7 @@ const VisualArt = ({ itemData, size }) => {
   //selection of image to display
   const handleSelectImage = (item) => {
     setSelectedImage(item);
+    setZoom(false);
   };
 
   //zoom for main image
