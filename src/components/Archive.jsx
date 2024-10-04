@@ -42,7 +42,7 @@ const Archive = ({ size }) => {
             <AccordionDetails>
               {size.width < 700 && selectedEvent && (
                 <div className="image-up">
-                  <img src={selectedEvent.img} className="img" />
+                  <img src={item.img} className="img" />
                 </div>
               )}
               <Typography>
