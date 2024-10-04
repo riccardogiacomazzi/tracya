@@ -448,6 +448,12 @@
   scrollbar-width: none; /* Firefox */
 }
 
+@media (max-width: 700px) {
+  .box-gigs {
+    width: 100%;
+  }
+}
+
 .box-gigs::-webkit-scrollbar {
   display: none;
 }
@@ -487,7 +493,18 @@
   flex-direction: column;
   justify-content: center;
   object-fit: fill;
-  border: solid;
+  border: 0.5px solid;
+}
+
+.accordion-container {
+  border: 0.5px solid;
+  margin-bottom: 5px;
+}
+
+.accordion-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 /* INFO */

@@ -1,23 +1,26 @@
 import archive from "../assets/archive";
 import P5Wrapper from "../assets/P5Wrapper";
-import sketch from "../assets/sketch";
+import sketchArchive from "../assets/sketchArchive";
 import { useEffect, useState } from "react";
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
-const Archive = () => {
-  const [eventOpen, setEventOpen] = useState([]);
+const Archive = ({ size }) => {
+  const [eventOpen, setEventOpen] = useState(archive.map(() => false));
   const [selectedEvent, setSelectedEvent] = useState();
 
-  useEffect(() => {
-    const elementOpen = archive.map((item) => false);
-    setEventOpen(elementOpen);
-  }, []);
+  const [canvasKey, setCanvasKey] = useState(0);
+
+  const handleImageClick = () => {
+    setCanvasKey((prevKey) => prevKey + 1);
+  };
 
   const handleEventSelect = (index) => {
-    console.log("selected:", index);
+    handleImageClick();
     const open = [...eventOpen];
-    eventOpen[index] = !eventOpen[index];
-    console.log(eventOpen);
-
+    open[index] = !eventOpen[index];
+    setEventOpen(open);
     setSelectedEvent(archive[index]);
   };
 
@@ -25,28 +28,43 @@ const Archive = () => {
     <div className="archive-container">
       <div className="box-gigs">
         {archive.map((item, index) => (
-          <li key={index} onClick={() => handleEventSelect(index)}>
-            {item.date} - {item.type} @{item.eventName}
-            <br />
-            {eventOpen[index] === true && (
-              <>
+          <Accordion key={index} expanded={eventOpen[index]} className="accordion-container">
+            <AccordionSummary
+              expandIcon={eventOpen[index] === true ? <RemoveIcon /> : <AddIcon />}
+              onClick={() => handleEventSelect(index)}
+            >
+              <div className="accordion-summary">
+                <Typography>
+                  {item.date} - {item.type} <br /> @ {item.eventName}
+                </Typography>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              {size.width < 700 && selectedEvent && (
+                <div className="image-up">
+                  <img src={selectedEvent.img} className="img" />
+                </div>
+              )}
+              <Typography>
                 {item.location.venue && item.location.venue} - {item.location.city}
                 <br /> {item.otherArtist.length > 0 && `w/ ${item.otherArtist.map((artist) => artist)} `}
-              </>
-            )}
-          </li>
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
         ))}
       </div>
-      <div className="imgs-container">
-        {/* {selectedEvent && selectedEvent.img.length > 0 && (
-          <div className="image-up">
-            <img src={selectedEvent.img} className="img" />
+      {size.width > 700 && (
+        <div className="imgs-container">
+          {selectedEvent && selectedEvent.img.length > 0 && (
+            <div className="image-up">
+              <img src={selectedEvent.img} className="img" />
+            </div>
+          )}
+          <div className="image-down" onClick={handleImageClick} style={{ cursor: "crosshair" }}>
+            <P5Wrapper sketch={sketchArchive} canvasKey={canvasKey} />
           </div>
-        )} */}
-        <div className="image-down">
-          <P5Wrapper sketch={sketch} />
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -85,7 +85,7 @@ function App() {
                 <Route path="/discography" element={<Discography size={size} />} />
                 <Route path="/live_sets" element={<LiveSets />} />
                 <Route path="/visual_art" element={<VisualArt itemData={itemData} size={size} />} />
-                <Route path="/archive" element={<Archive />} />
+                <Route path="/archive" element={<Archive size={size} />} />
                 <Route path="/info" element={<Info />} />
                 <Route path="/xyz" element={<Experiments size={size} />} />
               </Routes>

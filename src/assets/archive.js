@@ -113,7 +113,7 @@ const archive = [
     type: "Live set",
     eventName: "Rave",
     location: {
-      venue: "",
+      venue: "Portello",
       city: "Padova",
     },
     otherArtist: [],
@@ -144,38 +144,184 @@ const archive = [
   },
 
   {
-    type: "",
-    eventName: "",
+    type: "Live set",
+    eventName: "Dichotomy",
     location: {
-      venue: "",
-      city: "",
+      venue: "CSO Pedro",
+      city: "Padova",
     },
-    otherArtist: [],
-    date: "",
+    otherArtist: ["Lorenzo Rigo", "Shazwa", "Lawson Deery"],
+    date: "07.04.18",
     img: "",
   },
 
   {
-    type: "",
-    eventName: "",
+    type: "Live set",
+    eventName: "Dichotomy",
     location: {
-      venue: "",
-      city: "",
+      venue: "Bios Lab",
+      city: "Padova",
+    },
+    otherArtist: ["Input Selector", "Mill3ristic"],
+    date: "20.04.18",
+    img: "",
+  },
+  {
+    type: "Live set",
+    eventName: "Dichotomy",
+    location: {
+      venue: "CSO Pedro",
+      city: "Padova",
     },
     otherArtist: [],
+    date: "05.05.18",
+    img: "",
+  },
+  {
+    type: "VJ set",
+    eventName: "UFO",
+    location: {
+      venue: "Festival delle Basse",
+      city: "Padova",
+    },
+    otherArtist: [],
+    date: "29.09.18",
+    img: "",
+  },
+  {
+    type: "Live & VJ set",
+    eventName: "Decompression ",
+    location: {
+      venue: "CSO Pedro",
+      city: "Padova",
+    },
+    otherArtist: [],
+    date: "28.10.18",
+    img: "https://64.media.tumblr.com/4d892c077a0d9228b8d07fa06bdc9b8c/tumblr_inline_phbuthLGyA1r0l69z_500.jpg",
+  },
+
+  {
+    type: "Live & VJ set",
+    eventName: "Decompression",
+    location: {
+      venue: "CSO Pedro",
+      city: "Padova",
+    },
+    otherArtist: [],
+    date: "01.12.18",
+    img: "",
+  },
+
+  {
+    type: "Live set",
+    eventName: "UFO x Electro Session",
+    location: {
+      venue: "Bahnhof Live",
+      city: "Montagnana",
+    },
+    otherArtist: ["Fabrice", "Idga", "Algrain (visuals)"],
+    date: "21.04.19",
+    img: "https://64.media.tumblr.com/60028aba586c7f7f595c4ebfe9c1fde7/tumblr_inline_pqop53pypu1r0l69z_500.jpg",
+  },
+  {
+    type: "Live & VJ set",
+    eventName: "Decompression",
+    location: {
+      venue: "Circolo Nadir",
+      city: "Padova",
+    },
+    otherArtist: ["Lorenzo Rigo"],
+    date: "06.12.19",
+    img: "https://64.media.tumblr.com/15227d9e81d0d406edf770724d912e05/tumblr_inline_q2cp0uJkFK1r0l69z_500.jpg",
+  },
+  {
+    type: "Live set",
+    eventName: "HÖR",
+    location: {
+      venue: "HÖR",
+      city: "Berlin",
+    },
+    otherArtist: [],
+    date: "14.09.21",
+    img: "",
+  },
+  {
+    type: "Live set",
+    eventName: "HÖR",
+    location: {
+      venue: "HÖR",
+      city: "Berlin",
+    },
+    otherArtist: [],
+    date: "27.01.22",
+    img: "",
+  },
+
+  {
+    type: "Live set - performance",
+    eventName: "Our Family of Trees",
+    location: {
+      venue: "Monopol",
+      city: "Berlin",
+    },
+    otherArtist: ["Blake Kendall", "Pia Rot", "Leon Leesch", "Yagmur Cingillioglu", "Dani Mosimann", "Ricardo Silva"],
     date: "",
     img: "",
   },
   {
-    type: "",
-    eventName: "",
+    type: "Live set",
+    eventName: "Backside Radio",
     location: {
-      venue: "",
-      city: "",
+      venue: "Backside Radio",
+      city: "Berlin",
     },
     otherArtist: [],
-    date: "",
+    date: "15.08.23",
     img: "",
+  },
+  {
+    type: "A/V set",
+    eventName: "Radura Festival",
+    location: {
+      venue: "Radura Festival",
+      city: "Nocera Inferiore",
+    },
+    otherArtist: [],
+    date: "03.09.23",
+    img: "",
+  },
+  {
+    type: "Visual installation",
+    eventName: "GENERATOR",
+    location: {
+      venue: "Atomic Bunker",
+      city: "Stolzenhein",
+    },
+    otherArtist: ["MediumShift"],
+    date: "02.03.24",
+    img: "",
+  },
+  {
+    type: "Visual installation",
+    eventName: "GENERATOR",
+    location: {
+      venue: "Giri",
+      city: "Berlin",
+    },
+    otherArtist: [],
+    date: "28.07.24",
+    img: "https://live.staticflickr.com/65535/53910077668_f4b8a0bb9d_o.jpg",
+  },
+  {
+    type: "Visual installation",
+    eventName: "GENERATOR",
+    location: {
+      venue: "streets of Neukölln",
+      city: "Berlin",
+    },
+    otherArtist: [],
+    date: "07.09.24",
+    img: "https://live.staticflickr.com/65535/53983112629_d408aeb757_o.jpg",
   },
 ];
 

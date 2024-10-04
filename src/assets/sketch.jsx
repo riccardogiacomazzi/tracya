@@ -43,13 +43,8 @@ const sketch = (p5) => {
       if (p5.windowWidth > 700) {
         if (films % 3 === 0) {
           p5.drawingContext.shadowColor = p5.color(p5.random(colors_b) + "1a");
-          // p5.drawingContext.shadowOffsetX = str_wei;
-          // p5.drawingContext.shadowOffsetY = str_wei;
-          // p5.drawingContext.shadowBlur = p5.random(0, 1);
         } else {
           p5.drawingContext.shadowColor = p5.color(p5.random(colors_w) + "1a");
-          // p5.drawingContext.shadowOffsetX = str_wei;
-          // p5.drawingContext.shadowOffsetY = str_wei;
         }
       } else {
         if (films % 3 === 0) {
