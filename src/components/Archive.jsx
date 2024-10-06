@@ -28,10 +28,23 @@ const Archive = ({ size }) => {
     <div className="archive-container">
       <div className="box-gigs">
         {archive.map((item, index) => (
-          <Accordion key={index} expanded={eventOpen[index]} className="accordion-container">
+          <Accordion
+            key={index}
+            expanded={eventOpen[index]}
+            className="accordion-container"
+            sx={{ border: item === selectedEvent && "solid" }}
+          >
             <AccordionSummary
               expandIcon={eventOpen[index] === true ? <RemoveIcon /> : <AddIcon />}
               onClick={() => handleEventSelect(index)}
+              sx={{
+                "& .MuiAccordionSummary-expandIconWrapper": {
+                  transform: "none",
+                },
+                "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+                  transform: "none",
+                },
+              }}
             >
               <div className="accordion-summary">
                 <Typography>
@@ -47,7 +60,7 @@ const Archive = ({ size }) => {
               )}
               <Typography>
                 {item.location.venue && item.location.venue} - {item.location.city}
-                <br /> {item.otherArtist.length > 0 && `w/ ${item.otherArtist.map((artist) => artist)} `}
+                <br /> {item.otherArtist.length > 0 && `w/ ${item.otherArtist.map((artist) => artist)}`}
               </Typography>
             </AccordionDetails>
           </Accordion>

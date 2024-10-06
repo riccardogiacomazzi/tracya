@@ -14,6 +14,7 @@ import Info from "./components/Info";
 import Experiments from "./components/Experiments";
 import FlickrAPI from "./services/flickrService";
 import "./App.css";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const pages = ["Discography", "Live Sets", "Visual Art", "Info"];
@@ -31,54 +32,12 @@ function App() {
 
   const size = useWindowSize();
 
-  const handlePageSelect = (item) => {
-    setSelectedPage(item);
-  };
-
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <CssBaseline>
           <div className="main">
-            <div className="vertical-navigation">
-              <div className="title-container">
-                <Typography
-                  align="left"
-                  fontFamily={"Agnes"}
-                  fontSize={size.width > 700 ? "70px" : "30px"}
-                  sx={{
-                    writingMode: size.width > 700 ? "vertical-rl" : "",
-                    textOrientation: "upright",
-                    outline: "none",
-                  }}
-                  onClick={() => setSelectedPage()}
-                >
-                  <Link to={"/"} style={{ color: "black" }}>
-                    Tracya
-                  </Link>
-                </Typography>
-              </div>
-
-              <div className="pages-buttons-container">
-                {pages.map((item, index) => (
-                  <Typography
-                    onClick={() => handlePageSelect(item)}
-                    fontSize={size.width > 700 && "14px"}
-                    align={"center"}
-                    key={index}
-                    style={{ textDecoration: selectedPage === item && "underline" }}
-                  >
-                    <Link
-                      to={`/${item.replace(/ /g, "_").toLowerCase()}`}
-                      style={{ color: "black" }}
-                      className="link-outlines"
-                    >
-                      {item.toLocaleUpperCase()}
-                    </Link>
-                  </Typography>
-                ))}
-              </div>
-            </div>
+            <Sidebar pages={pages} size={size} />
             <div className="main-content">
               <Routes>
                 <Route path="/" element={<Home />} />
