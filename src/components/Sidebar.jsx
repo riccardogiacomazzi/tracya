@@ -11,7 +11,7 @@ const Sidebar = ({ pages, size }) => {
 
   return (
     <div className="vertical-navigation">
-      <div className="title-container">
+      <div className="title-container" onClick={() => setSelectedPage()}>
         <Typography
           align="left"
           fontFamily={"Agnes"}
@@ -21,7 +21,6 @@ const Sidebar = ({ pages, size }) => {
             textOrientation: "upright",
             outline: "none",
           }}
-          onClick={() => setSelectedPage()}
         >
           <Link to={"/"} style={{ color: "black" }}>
             Tracya
