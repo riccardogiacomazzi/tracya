@@ -7,7 +7,7 @@ const archive = [
       city: "Padova",
     },
     otherArtist: ["Populos", "Klune"],
-    date: "14/11/15",
+    date: "14.11.15",
     img: "https://64.media.tumblr.com/9fe796707230821f01d3f3186e1b207e/tumblr_inline_o0hgm8aHB91r0l69z_500.jpg",
   },
   {
@@ -18,7 +18,7 @@ const archive = [
       city: "Padova",
     },
     otherArtist: [],
-    date: "27/11/15",
+    date: "27.11.15",
     img: "https://64.media.tumblr.com/0ef9b3a4e296d35ebefb96cef27e8955/tumblr_inline_o0hgngZJYH1r0l69z_500.jpg",
   },
   {
@@ -244,6 +244,7 @@ const archive = [
     otherArtist: [],
     date: "14.09.21",
     img: "",
+    url: "https://www.youtube.com/live/8aidSjMR6Bk?si=XhZUF5iODqM9k8O4",
   },
   {
     type: "Live set",
@@ -255,6 +256,7 @@ const archive = [
     otherArtist: [],
     date: "27.01.22",
     img: "",
+    url: "https://www.youtube.com/live/mTELDThvr_4?si=MTUc5Bb9aZPHJ6ts",
   },
 
   {
@@ -265,8 +267,9 @@ const archive = [
       city: "Berlin",
     },
     otherArtist: ["Blake Kendall", "Pia Rot", "Leon Leesch", "Yagmur Cingillioglu", "Dani Mosimann", "Ricardo Silva"],
-    date: "",
+    date: "03.09.22",
     img: "",
+    url: "https://youtu.be/Ov1LPuB-l40?si=FD2PCgCu9IdVb-J6",
   },
   {
     type: "Live set",
@@ -278,6 +281,7 @@ const archive = [
     otherArtist: [],
     date: "15.08.23",
     img: "",
+    url: "https://www.youtube.com/live/5YYKijCcjo0?si=Zi4gp4T4szs2pAwc",
   },
   {
     type: "A/V set",
@@ -289,6 +293,7 @@ const archive = [
     otherArtist: [],
     date: "03.09.23",
     img: "",
+    url: "https://youtu.be/9K5xYQVzjSI?si=e-GDbtHq8jrssC6K",
   },
   {
     type: "Visual installation",

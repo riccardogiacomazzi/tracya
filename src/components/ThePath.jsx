@@ -5,7 +5,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import P5Wrapper from "../assets/P5Wrapper";
 import sketchPath from "../assets/sketchPath";
-import AssetThePath from "../assets/ThePath/AssetThePath";
 
 const ThePath = () => {
   const [canvasKey, setCanvasKey] = useState(0);
@@ -35,7 +34,6 @@ const ThePath = () => {
       <div className="player">
         <ReactPlayer url={"https://youtu.be/ekdgpXHxIWc?si=uuggCQJOyF_dvCXZ"} playing={false} controls={true} />
       </div>
-      {/* <p>The Path</p> */}
       {/* <div className="artworks">
         <div
           className="buttons"

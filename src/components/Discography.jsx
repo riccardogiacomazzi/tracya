@@ -1,4 +1,3 @@
-import discogsService from "../services/discogsService";
 import ReactPlayer from "react-player";
 import discography from "../assets/discography";
 import { Typography, Box, IconButton } from "@mui/material";
@@ -16,7 +15,8 @@ const Discography = ({ size }) => {
 
   useEffect(() => {
     const fetch = () => {
-      setReleases(discography);
+      let sortedDiscography = discography.sort((a, b) => b.year - a.year);
+      setReleases(sortedDiscography);
     };
 
     fetch();

@@ -1,4 +1,4 @@
-export default function mySketch(p) {
+export default function sketchPath(p) {
   let seed = Math.random() * 1247;
   let clicks = 1;
   var mySize, grad;
@@ -34,7 +34,7 @@ export default function mySketch(p) {
 
     for (let y = 0; y < highCount; y++) {
       for (let x = 0; x < wideCount; x++) {
-        mods[index++] = new Module(x * unit_x, y * unit_y, 0, 0, p.random(0.1, 0.25), 1 * unit_x);
+        mods[index++] = new Module(x * unit_x, y * unit_y, 0, 0, p.random(0.1, 0.25), unit_x);
       }
     }
 
@@ -53,8 +53,8 @@ export default function mySketch(p) {
     constructor(xOff, yOff, x, y, speed, unit) {
       this.xOff = xOff;
       this.yOff = yOff;
-      this.x = x;
-      this.y = y;
+      this.x = p.sin(x);
+      this.y = p.sin(y);
       this.speed = speed * 5;
       this.unit = unit;
       this.xDir = 1;
@@ -99,7 +99,14 @@ export default function mySketch(p) {
       grad.addColorStop(1, p.str(p.random(colorselet)));
       p.drawingContext.fillStyle = grad;
 
-      p.ellipse(0, 0, y_size / 3, 5, y_size * 0.5);
+      // p.ellipse(0, 0, y_size / 3, 5, y_size * 0.5);
+      p.rect(
+        p.width * p.random(y_size, 0.85) + (mySize / 2) * p.sin(0.7 * p.sin(0.5 - 0.5) - 0.5),
+        p.cos(1),
+        p.random(100, 500),
+        p.random(1000, 40)
+      );
+
       p.pop();
     }
   }

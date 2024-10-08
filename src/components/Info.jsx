@@ -39,7 +39,7 @@ const Info = () => {
           <br />
           <div className="contacts-container">
             {bio.contacts.map((item, index) => (
-              <div key={index}>
+              <div key={index} className="item">
                 <a href={item.link}>{item.name}</a>
               </div>
             ))}

@@ -1,4 +1,5 @@
 import archive from "../assets/archive";
+import ReactPlayer from "react-player";
 import P5Wrapper from "../assets/P5Wrapper";
 import sketchArchive from "../assets/sketchArchive";
 import { useEffect, useState } from "react";
@@ -11,6 +12,14 @@ const Archive = ({ size }) => {
   const [selectedEvent, setSelectedEvent] = useState();
 
   const [canvasKey, setCanvasKey] = useState(0);
+
+  const parseDate = (string) => {
+    const [day, month, year] = string.split(".");
+    const fullYear = "20" + year;
+    return new Date(`${fullYear}-${month}-${day}`);
+  };
+
+  const sortedArchive = archive.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
   const handleImageClick = () => {
     setCanvasKey((prevKey) => prevKey + 1);
@@ -27,12 +36,12 @@ const Archive = ({ size }) => {
   return (
     <div className="archive-container">
       <div className="box-gigs">
-        {archive.map((item, index) => (
+        {sortedArchive.map((item, index) => (
           <Accordion
             key={index}
             expanded={eventOpen[index]}
             className="accordion-container"
-            sx={{ border: item === selectedEvent && "solid" }}
+            sx={{ border: item === selectedEvent && size.width > 700 && "solid" }}
           >
             <AccordionSummary
               expandIcon={eventOpen[index] === true ? <RemoveIcon /> : <AddIcon />}
@@ -68,11 +77,17 @@ const Archive = ({ size }) => {
       </div>
       {size.width > 700 && (
         <div className="imgs-container">
-          {selectedEvent && selectedEvent.img.length > 0 && (
+          {selectedEvent && selectedEvent.img && (
             <div className="image-up">
               <img src={selectedEvent.img} className="img" />
             </div>
           )}
+          {selectedEvent && selectedEvent.url && (
+            <div className="image-up-video">
+              <ReactPlayer url={selectedEvent.url} width={"100%"} height={"100%"} playing={false} controls={true} />
+            </div>
+          )}
+
           <div className="image-down" onClick={handleImageClick} style={{ cursor: "crosshair" }}>
             <P5Wrapper sketch={sketchArchive} canvasKey={canvasKey} />
           </div>
