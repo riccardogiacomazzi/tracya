@@ -29,7 +29,9 @@ const Archive = ({ size }) => {
     handleImageClick();
     const open = [...eventOpen];
     open[index] = !eventOpen[index];
+
     setEventOpen(open);
+
     setSelectedEvent(archive[index]);
   };
 

@@ -99,13 +99,7 @@ export default function sketchPath(p) {
       grad.addColorStop(1, p.str(p.random(colorselet)));
       p.drawingContext.fillStyle = grad;
 
-      // p.ellipse(0, 0, y_size / 3, 5, y_size * 0.5);
-      p.rect(
-        p.width * p.random(y_size, 0.85) + (mySize / 2) * p.sin(0.7 * p.sin(0.5 - 0.5) - 0.5),
-        p.cos(1),
-        p.random(100, 500),
-        p.random(1000, 40)
-      );
+      p.ellipse(0, 0, y_size / 3, 5, y_size * 0.5);
 
       p.pop();
     }

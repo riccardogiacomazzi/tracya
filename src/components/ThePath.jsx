@@ -32,7 +32,12 @@ const ThePath = () => {
         <P5Wrapper sketch={sketchPath} canvasKey={canvasKey} />
       </div>
       <div className="player">
-        <ReactPlayer url={"https://youtu.be/ekdgpXHxIWc?si=uuggCQJOyF_dvCXZ"} playing={false} controls={true} />
+        <ReactPlayer
+          url={"https://youtu.be/ekdgpXHxIWc?si=uuggCQJOyF_dvCXZ"}
+          playing={false}
+          controls={true}
+          width={"auto"}
+        />
       </div>
       {/* <div className="artworks">
         <div

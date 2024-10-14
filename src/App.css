@@ -653,6 +653,7 @@
 
 .path-container .player {
   position: absolute;
+  width: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -660,7 +661,8 @@
 
 @media (max-width: 700px) {
   .path-container .player {
-    max-width: 70%;
+    width: 80%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
