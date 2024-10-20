@@ -65,8 +65,23 @@ const Archive = ({ size }) => {
             </AccordionSummary>
             <AccordionDetails>
               {size.width < 700 && selectedEvent && (
-                <div className="image-up">
-                  <img src={item.img} className="img" />
+                <div>
+                  {item.img && (
+                    <div className="image-up">
+                      <img src={item.img} className="img" />
+                    </div>
+                  )}
+                  {item.url && !item.img && (
+                    <div className="image-up-video">
+                      <ReactPlayer
+                        url={sortedArchive[index].url}
+                        width={"100%"}
+                        height={"100%"}
+                        playing={false}
+                        controls={true}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
               <Typography>
