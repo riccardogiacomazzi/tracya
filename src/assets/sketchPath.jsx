@@ -1,107 +1,100 @@
 export default function sketchPath(p) {
-  let seed = Math.random() * 1247;
-  let clicks = 1;
-  var mySize, grad;
-
   // colors
-  let colors2 = "897286-c15774-6483a9-485c89-cebca2".split("-").map((a) => "#" + a);
-  let colorBg = "7b8ba3-7cb6df-c4cbda-c4cbda-517bba".split("-").map((a) => "#" + a);
-  let colorselet = [];
+  const random = (min, max) => {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+  };
 
-  let unit_x, unit_y;
-  let multiplier = Math.random() * 555;
-  let count;
-  let mods = [];
+  let seed = random * 9821;
+  let mySize;
+  let circle_r;
+  let space;
+  let m;
+  let xspacing;
+  let w;
+  let maxwaves;
+  let theta;
+  let amplitude = [];
+  let dx = [];
+  let yvalues = [];
+  let colors0 = "897286-c15774-6483a9-485c89-cebca2".split("-").map((a) => "#" + a);
+  let colors1 = "7b8ba3-7cb6df-c4cbda-c4cbda-517bba".split("-").map((a) => "#" + a);
+  let color_1, color_2, colorbg;
 
-  p.setup = function () {
-    p.randomSeed(seed);
+  p.setup = () => {
+    random(seed);
     mySize = p.min(p.windowWidth, p.windowHeight);
     p.createCanvas(p.windowWidth, p.windowHeight);
-    colorselet[0] = p.random(colors2);
-    colorselet[1] = p.random(colors2);
-    colorselet[2] = p.random(colors2);
-    colorselet[3] = p.random(colorBg);
-    colorselet[4] = p.random(colorBg);
-    unit_x = p.windowWidth;
-    unit_y = p.windowHeight;
+    color_1 = colors1;
+    color_2 = colors0;
+    colorbg = p.random(color_1);
+    p.background(colorbg);
+    circle_r = (mySize / 3) * 2;
+    w = p.width;
 
+    m = 0;
+    xspacing = random(0.01, 5);
+    maxwaves = random(1, 10);
+    theta = 0.0;
+
+    for (let i = 0; i < maxwaves; i++) {
+      amplitude[i] = random(100, 20);
+
+      let period = random(50, 500);
+      dx[i] = (p.TWO_PI / period) * random(0.2, 4) * xspacing;
+    }
+
+    yvalues = new Array(p.floor(w / xspacing));
+  };
+
+  p.draw = () => {
+    random(seed);
+    p.push();
     p.noStroke();
-    let wideCount = p.width / unit_x;
-    let highCount = p.height / unit_y;
-    count = wideCount * highCount;
+    let color_c = p.random(color_2);
+    p.fill(color_c);
+    p.translate(p.width / 2, p.height / 2);
+    p.rotate(p.random(0, p.TAU));
 
-    let index = 0;
+    p.drawingContext.shadowColor = p.color(color_c);
+    p.drawingContext.shadowOffsetX = p.random(-5, 3);
 
-    for (let y = 0; y < highCount; y++) {
-      for (let x = 0; x < wideCount; x++) {
-        mods[index++] = new Module(x * unit_x, y * unit_y, 0, 0, p.random(0.1, 0.25), unit_x);
-      }
-    }
-
-    p.background(p.random(colorBg));
-  };
-
-  p.draw = function () {
-    for (let i = 0; i < count; i++) {
-      p.randomSeed(seed);
-      mods[i].update();
-      mods[i].draw();
-    }
-  };
-
-  class Module {
-    constructor(xOff, yOff, x, y, speed, unit) {
-      this.xOff = xOff;
-      this.yOff = yOff;
-      this.x = p.sin(x);
-      this.y = p.sin(y);
-      this.speed = speed * 5;
-      this.unit = unit;
-      this.xDir = 1;
-      this.yDir = 1;
-    }
-
-    update() {
-      this.x = this.x + this.speed * this.xDir;
-      this.y = this.y + this.speed * this.yDir;
-
-      if (this.x >= this.unit || this.x <= 0) {
-        this.xDir *= -1;
-        this.x = this.x + 1 * this.xDir;
-        this.y = this.y + 1 * this.yDir;
-      }
-      if (this.y >= this.unit || this.y <= 0) {
-        this.yDir *= -1;
-        this.y = this.y + 1 * this.yDir;
-      }
-    }
-
-    draw() {
-      p.stroke(p.str(p.random(colorselet)) + "1a");
-      p.strokeWeight(2 * p.random(p.random(0.5, 1)));
-      p.fill(p.str(p.random(colorselet)) + "80");
-
-      p.drawingContext.shadowColor = p.random(colors2);
-      p.drawingContext.shadowOffsetX = -1;
-      p.drawingContext.shadowOffsetY = -1;
-      p.drawingContext.shadowBlur = 0;
-      p.drawingContext.shadowColor = p.random(colors2);
-      p.drawingContext.shadowOffsetX = 1;
-      p.drawingContext.shadowOffsetY = 1;
-      p.drawingContext.shadowBlur = 0;
-      let y_size = this.unit * p.noise(p.random(), p.frameCount / 10);
-
+    for (let i = 0; i < xspacing * 3; i += p.int(random(2, 3))) {
       p.push();
-      p.translate(this.xOff + this.x, this.yOff + this.y);
-
-      grad = p.drawingContext.createLinearGradient(0, 0, y_size, y_size);
-      grad.addColorStop(0, p.random(colorselet));
-      grad.addColorStop(1, p.str(p.random(colorselet)));
-      p.drawingContext.fillStyle = grad;
-
-      p.ellipse(0, 0, y_size / 3, 5, y_size * 0.5);
-
+      p.translate(i, i * m + m);
+      calcWave();
+      renderWave();
       p.pop();
+    }
+    p.pop();
+    m -= p.random(0.01, 0.2);
+    if (m < -p.height / 8) {
+      p.noLoop();
+    }
+  };
+
+  function calcWave() {
+    for (let i = 0; i < yvalues.length; i++) {
+      yvalues[i] = 0;
+    }
+
+    for (let j = 0; j < maxwaves; j++) {
+      let x = theta;
+      for (let i = 0; i < yvalues.length; i++) {
+        if (j % 2 === 0) yvalues[i] += p.sin(x) * amplitude[j];
+        else yvalues[i] += p.cos(x) * amplitude[j];
+        x += dx[j];
+      }
+    }
+    theta += p.random(2, 0.001);
+  }
+
+  function renderWave() {
+    p.stroke(colorbg);
+    p.strokeWeight(random(10, 15));
+    for (let x = 0; x < yvalues.length; x++) {
+      p.point(-p.width + x * xspacing, p.height / 2 + yvalues[x]);
     }
   }
 }

@@ -63,8 +63,14 @@ const Discography = ({ size }) => {
               ref={(el) => (refs.current[index] = el)}
               style={{
                 height: height.length === releases.length && `${height[index]}px`,
-                minHeight: playerOpen[index] && height.length === releases.length && height[index] < 460 && "500px",
+                minHeight:
+                  playerOpen[index] &&
+                  height.length === releases.length &&
+                  height[index] < 460 &&
+                  size.width < 700 &&
+                  "500px",
                 transition: "min-height 0.5s ease",
+                maxHeight: height[index],
               }}
             >
               {playerOpen[index] === false ? (
@@ -76,7 +82,7 @@ const Discography = ({ size }) => {
                       </b>
                     </Typography>
                   )}
-                  <div className="image-container">
+                  <div className="image-container" style={{ height: "250px" }}>
                     <img onClick={() => handlePlayerOpen(index)} src={item.thumb} className="image-release" />
                     <br />
                   </div>
