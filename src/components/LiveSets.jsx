@@ -6,8 +6,16 @@ import liveSets from "../assets/liveSets";
 const LiveSets = () => {
   const [live, setLive] = useState([]);
 
+  const parseDate = (string) => {
+    const [day, month, year] = string.split(".");
+    const fullYear = "20" + year;
+    return new Date(`${fullYear}-${month}-${day}`);
+  };
+
+  const sortedLive = liveSets.sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
   useEffect(() => {
-    setLive(liveSets);
+    setLive(sortedLive);
   }, [live]);
 
   return (
@@ -29,8 +37,8 @@ const LiveSets = () => {
           <div className="info">
             <Typography align="left">Equipment:</Typography>
             <Typography align="right">
-              {item.equipment.map((item) => (
-                <span>{item} </span>
+              {item.equipment.map((item, index) => (
+                <span key={index}>{item} </span>
               ))}
             </Typography>
           </div>

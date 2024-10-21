@@ -35,7 +35,7 @@ const liveSets = [
     url: "https://www.youtube.com/live/5YYKijCcjo0?si=Zi4gp4T4szs2pAwc",
     event: "Backside Radio",
     location: "Berlin",
-    date: "02.09.2023",
+    date: "15.08.2023",
     equipment: ["Octatrack", "Machinedrum"],
     style: ["Techno", "Electro"],
   },

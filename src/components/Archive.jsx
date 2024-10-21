@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import ContrastIcon from "@mui/icons-material/Contrast";
 
 const Archive = ({ size }) => {
   const [eventOpen, setEventOpen] = useState(archive.map(() => false));
   const [selectedEvent, setSelectedEvent] = useState();
 
+  const [mobileCanva, setMobileCanva] = useState(false);
   const [canvasKey, setCanvasKey] = useState(0);
 
   const parseDate = (string) => {
@@ -21,12 +23,8 @@ const Archive = ({ size }) => {
 
   const sortedArchive = archive.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
-  const handleImageClick = () => {
-    setCanvasKey((prevKey) => prevKey + 1);
-  };
-
   const handleEventSelect = (index) => {
-    handleImageClick();
+    handleSketchClick();
     const open = [...eventOpen];
     open[index] = !eventOpen[index];
 
@@ -35,8 +33,19 @@ const Archive = ({ size }) => {
     setSelectedEvent(archive[index]);
   };
 
+  const handleButtonClick = () => {
+    setMobileCanva(!mobileCanva);
+  };
+
+  const handleSketchClick = () => {
+    setCanvasKey((prevKey) => prevKey + 1);
+  };
+
   return (
-    <div className="archive-container">
+    <div
+      className="archive-container"
+      style={{ flexDirection: size.width > 700 && "row", overflow: size.width < 700 && mobileCanva && "hidden" }}
+    >
       <div className="box-gigs">
         {sortedArchive.map((item, index) => (
           <Accordion
@@ -91,7 +100,26 @@ const Archive = ({ size }) => {
             </AccordionDetails>
           </Accordion>
         ))}
+        {/* Image mobile version */}
+        {mobileCanva && (
+          <div onClick={handleSketchClick} className="canvas">
+            <P5Wrapper sketch={sketchArchive} canvasKey={canvasKey} className="canvas" />
+          </div>
+        )}
       </div>
+
+      <div className="button" onClick={handleButtonClick}>
+        {size.width < 700 && (
+          <ContrastIcon
+            sx={{
+              transform: mobileCanva ? "rotate(180deg)" : "rotate(0deg)",
+              transition: "transform 0.03s ease",
+            }}
+          />
+        )}
+      </div>
+
+      {/* lateral images WEB version */}
       {size.width > 700 && (
         <div className="imgs-container">
           {selectedEvent && selectedEvent.img && (
@@ -105,7 +133,7 @@ const Archive = ({ size }) => {
             </div>
           )}
 
-          <div className="image-down" onClick={handleImageClick} style={{ cursor: "crosshair" }}>
+          <div className="image-down" onClick={handleSketchClick} style={{ cursor: "crosshair" }}>
             <P5Wrapper sketch={sketchArchive} canvasKey={canvasKey} />
           </div>
         </div>
