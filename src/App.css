@@ -21,7 +21,7 @@
 
 #root {
   max-width: 95vw;
-  max-height: 95vh;
+  max-height: 100vh;
   margin: 0 auto;
   text-align: center;
 }
@@ -50,7 +50,7 @@
 
 .main {
   width: 95vw;
-  height: 95vh;
+  height: 98vh;
   display: flex;
   flex-direction: row;
   align-items: center;

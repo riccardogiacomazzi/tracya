@@ -93,7 +93,7 @@ const discography = [
     labels: [
       {
         name: "51 Beats",
-        catno: "51bts054",
+        catno: "51BTS054",
         entity_type: "1",
         entity_type_name: "Label",
         id: 112524,
@@ -544,7 +544,7 @@ const discography = [
     labels: [
       {
         name: "Parallel Horizon",
-        catno: "-",
+        catno: "",
         entity_type: "1",
         entity_type_name: "Label",
         id: 1574525,
@@ -746,7 +746,7 @@ const discography = [
     labels: [
       {
         name: "51 Beats",
-        catno: "51bts072",
+        catno: "51BTS072",
         entity_type: "1",
         entity_type_name: "Label",
         id: 112524,

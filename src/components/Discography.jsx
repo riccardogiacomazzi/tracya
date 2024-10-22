@@ -29,7 +29,21 @@ const Discography = ({ size }) => {
 
   // set .release div height
   useEffect(() => {
-    if (refs.current.length > 0 && height.length === 0) {
+    if (refs.current.length > 0 && height.length === 0 && size.width < 700) {
+      setTimeout(() => {
+        const newHeight = refs.current.map((ref) => {
+          if (ref) {
+            if (ref.offsetHeight > 500) {
+              return ref.offsetHeight;
+            } else {
+              return 500;
+            }
+          }
+          return 0;
+        });
+        setHeight(newHeight);
+      }, 500);
+    } else if (refs.current.length > 0 && height.length === 0) {
       setTimeout(() => {
         const newHeight = refs.current.map((ref) => {
           if (ref) {
@@ -40,11 +54,13 @@ const Discography = ({ size }) => {
         setHeight(newHeight);
       }, 500);
     }
-  }, [releases, height]);
+  }, [releases, height, size]);
 
   const handlePlayerOpen = (index) => {
     const updatedPlayer = [...playerOpen];
-    updatedPlayer[index] = !updatedPlayer[index];
+    if (releases[index].player) {
+      updatedPlayer[index] = !updatedPlayer[index];
+    }
     setPlayerOpen(updatedPlayer);
   };
 
@@ -135,6 +151,8 @@ const Discography = ({ size }) => {
                         </div>
                         <Typography align="right" sx={{ marginTop: "20px" }}>
                           <i>{item.label}</i>
+                          <br />
+                          <i>{item.labels && item.labels.map((cat, index) => cat.catno)}</i>
                         </Typography>
                       </div>
                     </Box>

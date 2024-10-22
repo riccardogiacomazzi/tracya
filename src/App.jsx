@@ -20,7 +20,9 @@ import Sidebar from "./components/Sidebar";
 function App() {
   const pages = ["Discography", "Live Sets", "Visual Art", "Info"];
   const [itemData, setItemData] = useState([]);
+  const [appHeight, setAppHeight] = useState(window.innerHeight);
 
+  // api fetch pictures
   useEffect(() => {
     const flickrService = async () => {
       const data = await FlickrAPI.FlickrPhotos();
@@ -32,28 +34,52 @@ function App() {
 
   const size = useWindowSize();
 
+  // determines app height accounting for the browser's navbar
+  useEffect(() => {
+    console.log(window.innerHeight);
+
+    const handleResize = () => {
+      setAppHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <CssBaseline>
-          <div className="main">
-            <Sidebar pages={pages} size={size} />
-            <div className="main-content">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/discography" element={<Discography size={size} />} />
-                <Route path="/live_sets" element={<LiveSets />} />
-                <Route path="/visual_art" element={<VisualArt itemData={itemData} size={size} />} />
-                <Route path="/archive" element={<Archive size={size} />} />
-                <Route path="/info" element={<Info />} />
-                <Route path="/xyz" element={<Experiments size={size} />} />
-                <Route path="the_path" element={<ThePath />} />
-              </Routes>
+    <div
+      id="root"
+      style={{
+        maxWidth: "95vw",
+        maxHeight: `${appHeight}px`,
+        margin: "0 auto",
+        textAlign: "center",
+      }}
+    >
+      <Router>
+        <ThemeProvider theme={theme}>
+          <CssBaseline>
+            <div className="main">
+              <Sidebar pages={pages} size={size} />
+              <div className="main-content">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/discography" element={<Discography size={size} />} />
+                  <Route path="/live_sets" element={<LiveSets />} />
+                  <Route path="/visual_art" element={<VisualArt itemData={itemData} size={size} />} />
+                  <Route path="/archive" element={<Archive size={size} />} />
+                  <Route path="/info" element={<Info />} />
+                  <Route path="/xyz" element={<Experiments size={size} />} />
+                  <Route path="the_path" element={<ThePath />} />
+                </Routes>
+              </div>
             </div>
-          </div>
-        </CssBaseline>
-      </ThemeProvider>
-    </Router>
+          </CssBaseline>
+        </ThemeProvider>
+      </Router>
+    </div>
   );
 }
 
