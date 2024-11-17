@@ -30,17 +30,17 @@ const Sidebar = ({ pages, size }) => {
 
       <div className="pages-buttons-container">
         {pages.map((item, index) => (
-          <Typography
-            onClick={() => handlePageSelect(item)}
-            fontSize={size.width > 700 && "14px"}
-            align={"center"}
-            key={index}
-            style={{ textDecoration: selectedPage === item && "underline" }}
-          >
-            <Link to={`/${item.replace(/ /g, "_").toLowerCase()}`} style={{ color: "black" }} className="link-outlines">
+          <Link to={`/${item.replace(/ /g, "_").toLowerCase()}`} style={{ color: "black" }} className="link-outlines">
+            <Typography
+              onClick={() => handlePageSelect(item)}
+              fontSize={size.width > 700 && "14px"}
+              align={"center"}
+              key={index}
+              style={{ textDecoration: selectedPage === item && "underline", height: size.width > 700 && "30px" }}
+            >
               {item.toLocaleUpperCase()}
-            </Link>
-          </Typography>
+            </Typography>
+          </Link>
         ))}
       </div>
     </div>
