@@ -36,8 +36,6 @@ function App() {
 
   // determines app height accounting for the browser's navbar
   useEffect(() => {
-    console.log(window.innerHeight);
-
     const handleResize = () => {
       setAppHeight(window.innerHeight);
     };

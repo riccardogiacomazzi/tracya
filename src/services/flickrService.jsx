@@ -40,6 +40,18 @@ const FlickrPhotos = async () => {
     }
   };
 
+  const fetchPhotoDetails = async (photoId) => {
+    try {
+      const response = await axios.get(
+        `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${apiKey}&photo_id=${photoId}&format=json&nojsoncallback=1`
+      );
+      const data = response.data.photo.description._content;
+      return { description: data };
+    } catch (error) {
+      error.message;
+    }
+  };
+
   const fetchPhotos = async () => {
     try {
       const response = await axios.get(`${baseUrl}`);
@@ -49,14 +61,20 @@ const FlickrPhotos = async () => {
 
       for (const pic of photo) {
         promises.push(
-          Promise.all([fetchPhotoSize(pic.id), fetchPhotoTag(pic.id)]).then(([urlPics, tagPics]) => {
-            const newPic = {
-              img: { small: urlPics.small, large: urlPics.large, original: urlPics.original },
-              title: pic.title,
-              tag: tagPics.tag,
-            };
-            return newPic;
-          })
+          Promise.all([fetchPhotoSize(pic.id), fetchPhotoTag(pic.id), fetchPhotoDetails(pic.id)]).then(
+            ([urlPics, tagPics, detailsPics]) => {
+              const newPic = {
+                img: { small: urlPics.small, large: urlPics.large, original: urlPics.original },
+                title: pic.title,
+                tag: tagPics.tag,
+                details: detailsPics,
+              };
+
+              console.log(newPic);
+
+              return newPic;
+            }
+          )
         );
       }
 

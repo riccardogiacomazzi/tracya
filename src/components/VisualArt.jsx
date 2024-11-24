@@ -25,7 +25,8 @@ const VisualArt = ({ itemData, size }) => {
   uniqueTags.forEach((tag) => {
     const filteredItems = itemData.filter((item) => item.tag.includes(tag));
     const images = filteredItems.map((item) => item.img);
-    itemByTag.push({ tag: tag, img: images });
+    const description = filteredItems.map((item) => item.details.description);
+    itemByTag.push({ tag: tag, img: images, description: description });
   });
 
   //scroll on top automatically on render, and when Index of album displayed is changed
@@ -42,6 +43,7 @@ const VisualArt = ({ itemData, size }) => {
   //selection of image to display
   const handleSelectImage = (item) => {
     setSelectedImage(item);
+
     setZoom(false);
   };
 
@@ -67,8 +69,8 @@ const VisualArt = ({ itemData, size }) => {
             ref={boxRef}
           >
             <ImageList variant="masonry" cols={1} gap={5}>
-              {item.img.map((img, index) => (
-                <ImageListItem key={index} onClick={() => handleSelectImage(img)}>
+              {item.img.map((img, indexImg) => (
+                <ImageListItem key={indexImg} onClick={() => handleSelectImage(img)}>
                   <img srcSet={`${img.original}`} src={`${img.original}`} alt={img.title} loading="lazy" />
                 </ImageListItem>
               ))}
@@ -82,6 +84,7 @@ const VisualArt = ({ itemData, size }) => {
         <Box className="photo-info-container">
           <Box className="visual-info">
             <Typography align="left">{bio.visualArt}</Typography>
+            <Typography align="center">{itemData.details && itemData.details}</Typography>
           </Box>
           <Box className="big-photo-container-works">
             {/* conditionally renderes big image clicked */}
