@@ -70,8 +70,6 @@ const FlickrPhotos = async () => {
                 details: detailsPics,
               };
 
-              console.log(newPic);
-
               return newPic;
             }
           )
