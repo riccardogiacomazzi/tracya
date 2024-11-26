@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, Component } from "react";
-import { Box, Typography, ImageList, ImageListItem } from "@mui/material";
+import { Box, Button, Typography, ImageList, ImageListItem } from "@mui/material";
 import bio from "../assets/bio";
+import P5Wrapper from "../assets/P5Wrapper";
+import sketchVisual from "../assets/sketchVisual";
 
 const VisualArt = ({ itemData, size }) => {
   const [filteredByTag, setFilteredByTag] = useState();
@@ -69,9 +71,17 @@ const VisualArt = ({ itemData, size }) => {
           <ImageList variant="masonry" cols={1} gap={5}>
             {filteredByTag.map((item, index) => (
               <ImageListItem key={index} onClick={() => handleSelectImage(item, index)}>
+                {/* MOBILE - RENDER TEXT ON CLICK + P% BACKGROUND */}
                 {size.width < 700 && descriptionVisible[index] && item.details.description && (
                   <div className="visual-info-mobile">
-                    <Typography>{item.details.description}</Typography>
+                    <div className="p5wrapper">
+                      <P5Wrapper sketch={sketchVisual} />
+                    </div>
+                    <div className="text">
+                      <Typography align="center" sx={{ padding: "10px" }}>
+                        {item.details.description}
+                      </Typography>
+                    </div>
                   </div>
                 )}
                 <img srcSet={`${item.img.large}`} src={`${item.img.large}`} alt={item.img.title} loading="lazy" />

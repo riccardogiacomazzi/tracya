@@ -413,17 +413,33 @@
 
 .visual-info-mobile {
   position: absolute;
-  bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-  overflow: scroll;
+  overflow: hidden;
   color: white;
   display: flex;
-  align-items: center;
-  padding: 10px;
+  margin: 0;
+  padding: 0;
 }
 
+.visual-info-mobile .p5wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.visual-info-mobile .text {
+  height: 100%;
+  width: 100%;
+  z-index: 3; /* Topmost layer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .big-photo-container-works {
   width: 100%;
   height: auto;
