@@ -5,6 +5,8 @@ import bio from "../assets/bio";
 const VisualArt = ({ itemData, size }) => {
   const [filteredByTag, setFilteredByTag] = useState();
 
+  const [descriptionVisible, setDescriptionVisible] = useState();
+
   const [selectedImage, setSelectedImage] = useState();
   const [zoom, setZoom] = useState(false);
 
@@ -24,9 +26,15 @@ const VisualArt = ({ itemData, size }) => {
   }, []);
 
   //selection of image to display
-  const handleSelectImage = (item) => {
-    setSelectedImage(item);
-    setZoom(false);
+  const handleSelectImage = (item, index) => {
+    if (size.width > 700) {
+      setSelectedImage(item);
+      setZoom(false);
+    } else {
+      const updatedDescription = [...descriptionVisible];
+      updatedDescription[index] = !updatedDescription[index];
+      setDescriptionVisible(updatedDescription);
+    }
   };
 
   //zoom for main image
@@ -40,6 +48,7 @@ const VisualArt = ({ itemData, size }) => {
     if (itemData && itemData.length > 0) {
       const filterItemData = itemData.filter((item) => visibleTags.some((tag) => item.tag.includes(tag)));
       setFilteredByTag(filterItemData);
+      setDescriptionVisible(filterItemData.map((item) => false));
     }
   }, [itemData]);
 
@@ -56,18 +65,23 @@ const VisualArt = ({ itemData, size }) => {
         }}
         ref={boxRef}
       >
-        <ImageList variant="masonry" cols={1} gap={5}>
-          {filteredByTag &&
-            filteredByTag.map((item, index) => (
-              <ImageListItem key={index} onClick={() => handleSelectImage(item)}>
-                <img srcSet={`${item.img.original}`} src={`${item.img.original}`} alt={item.img.title} loading="lazy" />
+        {filteredByTag && (
+          <ImageList variant="masonry" cols={1} gap={5}>
+            {filteredByTag.map((item, index) => (
+              <ImageListItem key={index} onClick={() => handleSelectImage(item, index)}>
+                {size.width < 700 && descriptionVisible[index] && item.details.description && (
+                  <div className="visual-info-mobile">
+                    <Typography>{item.details.description}</Typography>
+                  </div>
+                )}
+                <img srcSet={`${item.img.large}`} src={`${item.img.large}`} alt={item.img.title} loading="lazy" />
               </ImageListItem>
             ))}
-        </ImageList>
+          </ImageList>
+        )}
       </Box>
 
       {/* big photo container - rendered on WEB and only when a picture is selected */}
-
       {size.width > 700 && selectedImage && (
         <Box className="photo-info-container">
           <Box className="visual-info">

@@ -411,6 +411,19 @@
   flex-direction: column;
 }
 
+.visual-info-mobile {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  overflow: scroll;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
 .big-photo-container-works {
   width: 100%;
   height: auto;
