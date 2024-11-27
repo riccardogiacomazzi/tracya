@@ -16,6 +16,16 @@ const VisualArt = ({ itemData, size }) => {
 
   const boxRef = useRef(null);
 
+  const [loadedImages, setLoadedImages] = useState(0);
+
+  const totalImages = filteredByTag && filteredByTag.length;
+
+  const handleImageLoad = () => {
+    setLoadedImages((prev) => prev + 1);
+  };
+
+  const allImagesLoaded = loadedImages === totalImages;
+
   //scroll on top automatically on render, and when Index of album displayed is changed
   const triggerScrollTop = () => {
     if (boxRef.current) {
@@ -33,10 +43,15 @@ const VisualArt = ({ itemData, size }) => {
     setZoom(false);
 
     const updatedDescription = [...descriptionVisible];
-    for (let index = 0; index < updatedDescription.length; index++) {
+
+    if (updatedDescription[index]) {
       updatedDescription[index] = false;
+    } else {
+      updatedDescription.fill(false);
+      updatedDescription[index] = true;
     }
-    updatedDescription[index] = !updatedDescription[index];
+
+    // Update the state
     setDescriptionVisible(updatedDescription);
   };
 
@@ -114,6 +129,7 @@ const VisualArt = ({ itemData, size }) => {
                 srcSet={`${selectedImage.img.original}`}
                 src={`${selectedImage.img.original}`}
                 loading="lazy"
+                onLoad={handleImageLoad}
               />
             )}
           </Box>
