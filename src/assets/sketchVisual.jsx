@@ -28,7 +28,10 @@ const sketchVisual = (p5) => {
   // Setup function
   p5.setup = () => {
     p5.randomSeed(seed);
-    p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    // const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    const canvas = p5.createCanvas(400, 700);
+
+    canvas.id("blurredCanvas");
     p5.noLoop(); // Only draw once since it's static
     radius = Math.min(p5.width, p5.height * 2);
   };
@@ -36,7 +39,6 @@ const sketchVisual = (p5) => {
   // Draw function
   p5.draw = () => {
     p5.background(0); // Black background
-    p5.drawingContext.filter = "blur(30px)";
     // Draw gradient circle
     let centerX = p5.width / 2;
     let maxOffset = p5.random(100, 200);
@@ -45,7 +47,7 @@ const sketchVisual = (p5) => {
 
   // Function to draw gradient circle
   const drawGradientCircle = (x, y, r) => {
-    const steps = 10; //
+    const steps = 5; //
     for (let i = 0; i < steps; i++) {
       const inter = i / steps;
       let color;

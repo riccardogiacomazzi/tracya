@@ -29,14 +29,15 @@ const VisualArt = ({ itemData, size }) => {
 
   //selection of image to display
   const handleSelectImage = (item, index) => {
-    if (size.width > 700) {
-      setSelectedImage(item);
-      setZoom(false);
-    } else {
-      const updatedDescription = [...descriptionVisible];
-      updatedDescription[index] = !updatedDescription[index];
-      setDescriptionVisible(updatedDescription);
+    setSelectedImage(item);
+    setZoom(false);
+
+    const updatedDescription = [...descriptionVisible];
+    for (let index = 0; index < updatedDescription.length; index++) {
+      updatedDescription[index] = false;
     }
+    updatedDescription[index] = !updatedDescription[index];
+    setDescriptionVisible(updatedDescription);
   };
 
   //zoom for main image
@@ -71,19 +72,22 @@ const VisualArt = ({ itemData, size }) => {
           <ImageList variant="masonry" cols={1} gap={5}>
             {filteredByTag.map((item, index) => (
               <ImageListItem key={index} onClick={() => handleSelectImage(item, index)}>
-                {/* MOBILE - RENDER TEXT ON CLICK + P% BACKGROUND */}
-                {size.width < 700 && descriptionVisible[index] && item.details.description && (
-                  <div className="visual-info-mobile">
+                {/* MOBILE - RENDER TEXT ON CLICK + P5 BACKGROUND */}
+                <div className="visual-info-mobile">
+                  {descriptionVisible[index] && (
                     <div className="p5wrapper">
                       <P5Wrapper sketch={sketchVisual} />
                     </div>
+                  )}
+                  {size.width < 700 && descriptionVisible[index] && item.details.description && (
                     <div className="text">
                       <Typography align="center" sx={{ padding: "10px" }}>
                         {item.details.description}
                       </Typography>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
+
                 <img srcSet={`${item.img.large}`} src={`${item.img.large}`} alt={item.img.title} loading="lazy" />
               </ImageListItem>
             ))}

@@ -440,6 +440,11 @@
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+#blurredCanvas {
+  filter: blur(20px); /* Apply blur */
+}
+
 .big-photo-container-works {
   width: 100%;
   height: auto;
