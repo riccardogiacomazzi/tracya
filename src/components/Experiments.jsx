@@ -18,7 +18,7 @@ const Experiments = ({}) => {
     if (random > 0.5) {
       setGeneratorDisplay(true);
     } else {
-      setGeneratorDisplay(true);
+      setGeneratorDisplay(false);
     }
   }, []);
 

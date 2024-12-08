@@ -17,14 +17,17 @@ const generator2 = (p5) => {
     "#899de4",
   ];
 
-  let scaleFactor = p5.random(1.0, 1.5);
+  let scaleFactor = p5.random(0.75, 2);
   let scaleDirection = -1; // 1 for growing, -1 for shrinking
   let colorTransitionProgress = 0;
   let targetColors = [];
   let baseX; // Base horizontal position
+  let baseY; // Base vertical position
   let horizontalOffset = p5.random(-p5.windowWidth / 4, p5.windowWidth / 4); // Maximum offset for horizontal movement
-  let movementSpeed = p5.random(1, 3); // Speed of horizontal movement
+  let movementSpeed = p5.random(0.75, 1.5); // Speed of horizontal movement
   let xMovement = p5.random(-p5.windowWidth / 4, p5.windowWidth / 4); // Current horizontal offset
+  let yMovement = p5.random(-p5.windowHeight / 5, p5.windowHeight / 5); // Current vertical offset
+  let verticalSpeed = p5.random(0.1, 0.75); // Speed of vertical movement
   let distortX = p5.random(1, 2); // Horizontal distortion factor
   let distortY = p5.random(1, 3); // Vertical distortion factor
 
@@ -60,6 +63,7 @@ const generator2 = (p5) => {
     const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
     radius = calculateMinRadius();
     baseX = p5.width / 2;
+    baseY = p5.height / 2; // Set base Y to be in the center
 
     // Initialize gradient colors
     selectRandomColors();
@@ -83,7 +87,7 @@ const generator2 = (p5) => {
     );
 
     // Update scale factor for growing/shrinking effect
-    scaleFactor += scaleDirection * 0.005; // Adjust speed of size change
+    scaleFactor += scaleDirection * p5.random(0.005, 0.009); // Adjust speed of size change
     if (scaleFactor > 1.5 || scaleFactor < 1.0) {
       scaleDirection *= -1; // Reverse direction when limits are reached
     }
@@ -94,11 +98,18 @@ const generator2 = (p5) => {
       movementSpeed *= -1; // Reverse direction
     }
 
+    // Update vertical position
+    yMovement += verticalSpeed;
+    if (yMovement > p5.windowHeight / 4 || yMovement < -p5.windowHeight / 4) {
+      verticalSpeed *= -1; // Reverse vertical movement
+    }
+
     const currentX = baseX + xMovement; // Calculate current horizontal position
+    const currentY = baseY + yMovement; // Calculate current vertical position
     const adjustedRadius = radius * scaleFactor; // Adjust circle size dynamically
 
     // Draw distorted gradient circle
-    drawDistortedCircle(currentX, p5.height / 2, adjustedRadius, transitioningColors);
+    drawDistortedCircle(currentX, currentY, adjustedRadius, transitioningColors);
   };
 
   // Function to draw distorted circle (ellipse)
@@ -131,6 +142,7 @@ const generator2 = (p5) => {
     p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
     radius = calculateMinRadius(); // Recalculate radius for new screen size
     baseX = p5.width / 2; // Re-center on resize
+    baseY = p5.height / 2; // Re-center vertically on resize
   };
 };
 
