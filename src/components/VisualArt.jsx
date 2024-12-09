@@ -16,15 +16,9 @@ const VisualArt = ({ itemData, size }) => {
 
   const boxRef = useRef(null);
 
-  const [loadedImages, setLoadedImages] = useState(0);
-
-  const totalImages = filteredByTag && filteredByTag.length;
-
   const handleImageLoad = () => {
     setLoadedImages((prev) => prev + 1);
   };
-
-  const allImagesLoaded = loadedImages === totalImages;
 
   //scroll on top automatically on render, and when Index of album displayed is changed
   const triggerScrollTop = () => {
@@ -94,13 +88,13 @@ const VisualArt = ({ itemData, size }) => {
                       <P5Wrapper sketch={sketchVisual} />
                     </div>
                   )}
-                  {size.width < 700 && descriptionVisible[index] && item.details.description && (
+                  {/* {size.width < 700 && descriptionVisible[index] && item.details.description && (
                     <div className="text">
                       <Typography align="center" sx={{ padding: "10px" }}>
                         {item.details.description}
                       </Typography>
                     </div>
-                  )}
+                  )} */}
                 </div>
 
                 <img srcSet={`${item.img.large}`} src={`${item.img.large}`} alt={item.img.title} loading="lazy" />

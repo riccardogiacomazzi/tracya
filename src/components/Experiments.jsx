@@ -13,7 +13,6 @@ const Experiments = ({}) => {
 
   useEffect(() => {
     let random = Math.random();
-    console.log(random);
 
     if (random > 0.5) {
       setGeneratorDisplay(true);
@@ -25,9 +24,9 @@ const Experiments = ({}) => {
   return (
     <div className="experiment-container" onClick={handleImageClick} style={{ cursor: "crosshair" }}>
       {!generatorDisplay ? (
-        <P5Wrapper sketch={sketch} canvasKey={canvasKey} className="wrapper" />
+        <P5Wrapper sketch={sketch} canvasKey={canvasKey} />
       ) : (
-        <P5Wrapper sketch={generator2} canvasKey={canvasKey} className="wrapper" />
+        <P5Wrapper sketch={generator2} canvasKey={canvasKey} />
       )}
     </div>
   );

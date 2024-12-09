@@ -35,10 +35,10 @@
   -ms-user-select: none;
   user-select: none;
 }
-.noSelect:focus {
+
+:focus {
   outline: none !important;
 }
-
 /* components */
 
 .flexbox {
@@ -381,6 +381,7 @@
   width: 10%;
   min-width: 10%;
   overflow: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .box-tag::-webkit-scrollbar {
@@ -420,6 +421,7 @@
   display: flex;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .visual-info-mobile .p5wrapper {
