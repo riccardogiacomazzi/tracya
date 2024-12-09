@@ -57,12 +57,16 @@ const generator2 = (p5) => {
 
   p5.setup = () => {
     p5.randomSeed(seed);
+    // p5.noCanvas();
+
     const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
     radius = calculateMinRadius();
     baseX = p5.width / 2;
     baseY = p5.height / 2;
 
     canvas.id("blurredCanvas");
+    const initialBackground = p5.random(colors);
+    p5.background(initialBackground);
 
     // Initialize gradient colors
     selectRandomColors();
@@ -70,12 +74,12 @@ const generator2 = (p5) => {
 
     // If on mobile, reduce the frame rate for performance
     if (p5.windowWidth < 800) {
-      p5.frameRate(30); // Lower frame rate on mobile devices
+      p5.frameRate(25); // Lower frame rate on mobile devices
     }
   };
 
   p5.draw = () => {
-    p5.background(0);
+    // p5.background(p5.random(colors));
 
     // Update gradient colors gradually
     colorTransitionProgress += 0.01;
@@ -140,10 +144,13 @@ const generator2 = (p5) => {
   };
 
   p5.windowResized = () => {
-    p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+    p5.createCanvas(p5.windowWidth, p5.windowHeight);
     radius = calculateMinRadius();
     baseX = p5.width / 2;
     baseY = p5.height / 2;
+
+    const resizedBackground = p5.random(colors);
+    p5.background(resizedBackground);
   };
 };
 

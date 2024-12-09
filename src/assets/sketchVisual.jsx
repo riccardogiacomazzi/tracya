@@ -29,7 +29,7 @@ const sketchVisual = (p5) => {
   p5.setup = () => {
     p5.randomSeed(seed);
     // const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
-    const canvas = p5.createCanvas(400, 700);
+    const canvas = p5.createCanvas(800, 700);
 
     canvas.id("blurredCanvas");
     p5.noLoop(); // Only draw once since it's static
