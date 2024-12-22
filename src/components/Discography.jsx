@@ -1,4 +1,5 @@
 import ReactPlayer from "react-player";
+import { useMusicPlayer } from "./MusicPlayerContext";
 import discography from "../assets/discography";
 import { Typography, Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -9,6 +10,8 @@ const Discography = ({ size }) => {
   const [releases, setReleases] = useState([]);
   const [playerOpen, setPlayerOpen] = useState([]);
   const [imageLoad, setImageLoad] = useState(false);
+
+  const { playTrack } = useMusicPlayer();
 
   const [height, setHeight] = useState([]);
   const refs = useRef([]);
@@ -135,7 +138,8 @@ const Discography = ({ size }) => {
                             }}
                             align="left"
                             key={trackIndex}
-                            onClick={() => handlePlayerOpen(index)}
+                            // onClick={() => handlePlayerOpen(index)}
+                            onClick={() => playTrack(item.player)}
                           >
                             <b>{track.title}</b> {track.duration}
                           </Typography>

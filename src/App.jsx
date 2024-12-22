@@ -16,6 +16,7 @@ import ThePath from "./components/ThePath";
 import FlickrAPI from "./services/flickrService";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
+import { MusicPlayerProvider } from "./components/MusicPlayerContext";
 
 function App() {
   const pages = ["Discography", "Live Sets", "Visual Art", "Info"];
@@ -47,37 +48,41 @@ function App() {
   }, []);
 
   return (
-    <div
-      id="root"
-      style={{
-        maxWidth: "95vw",
-        maxHeight: `${appHeight}px`,
-        margin: "0 auto",
-        textAlign: "center",
-      }}
-    >
-      <Router>
-        <ThemeProvider theme={theme}>
-          <CssBaseline>
-            <div className="main">
-              <Sidebar pages={pages} size={size} />
-              <div className="main-content">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/discography" element={<Discography size={size} />} />
-                  <Route path="/live_sets" element={<LiveSets />} />
-                  <Route path="/visual_art" element={<VisualArt itemData={itemData} size={size} />} />
-                  <Route path="/archive" element={<Archive size={size} />} />
-                  <Route path="/info" element={<Info />} />
-                  <Route path="/xyz" element={<Experiments size={size} />} />
-                  <Route path="the_path" element={<ThePath />} />
-                </Routes>
+    <MusicPlayerProvider>
+      <div
+        id="root"
+        style={{
+          maxWidth: "100vw",
+          width: "100vw",
+          maxHeight: `${appHeight}px`,
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Router>
+          <ThemeProvider theme={theme}>
+            <CssBaseline>
+              <div className="main">
+                <Sidebar pages={pages} size={size} />
+                <div className="main-content">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/discography" element={<Discography size={size} />} />
+                    <Route path="/live_sets" element={<LiveSets />} />
+                    <Route path="/visual_art" element={<VisualArt itemData={itemData} size={size} />} />
+                    <Route path="/archive" element={<Archive size={size} />} />
+                    <Route path="/info" element={<Info />} />
+                    <Route path="/xyz" element={<Experiments size={size} />} />
+                    <Route path="the_path" element={<ThePath />} />
+                  </Routes>
+                </div>
               </div>
-            </div>
-          </CssBaseline>
-        </ThemeProvider>
-      </Router>
-    </div>
+            </CssBaseline>
+          </ThemeProvider>
+        </Router>
+      </div>
+    </MusicPlayerProvider>
   );
 }
 
