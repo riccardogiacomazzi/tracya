@@ -444,7 +444,7 @@
 }
 
 #blurredCanvas {
-  filter: blur(20px); /* Apply blur */
+  filter: blur(20px) contrast(110%); /* Apply blur */
 }
 
 .big-photo-container-works {
