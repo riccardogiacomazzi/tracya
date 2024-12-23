@@ -51,7 +51,7 @@ function App() {
   return (
     <MusicPlayerProvider>
       <div
-        id="root"
+        // id="root"
         style={{
           maxWidth: "100vw",
           width: "100vw",
@@ -59,6 +59,7 @@ function App() {
           textAlign: "center",
           display: "flex",
           flexDirection: "column",
+          overflow: "hidden",
         }}
       >
         <Router>
@@ -78,7 +79,6 @@ function App() {
                     <Route path="the_path" element={<ThePath />} />
                   </Routes>
                 </div>
-                {size.width < 700 && <MusicPlayer />}
               </div>
             </CssBaseline>
           </ThemeProvider>

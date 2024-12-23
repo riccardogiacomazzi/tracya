@@ -14,6 +14,7 @@ const Sidebar = ({ pages, size }) => {
     <div className="vertical-navigation">
       {size.width > 700 && <MusicPlayer />}
       <div className="title-container" onClick={() => setSelectedPage()}>
+        {size.width < 700 && <MusicPlayer />}
         <Typography
           align="left"
           fontFamily={"Agnes"}
@@ -22,6 +23,7 @@ const Sidebar = ({ pages, size }) => {
             writingMode: size.width > 700 ? "vertical-rl" : "",
             textOrientation: "upright",
             outline: "none",
+            marginBottom: "-5px",
           }}
         >
           <Link to={"/"} style={{ color: "black" }}>

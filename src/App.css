@@ -19,13 +19,6 @@
   font-style: normal;
 }
 
-/* #root {
-  max-width: 95vw;
-  max-height: 100vh;
-  margin: 0 auto;
-  text-align: center;
-} */
-
 .noSelect {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -61,7 +54,7 @@
 @media (max-width: 700px) {
   .main {
     padding: 0px;
-    height: 100vh;
+    height: 98vh;
   }
 }
 
@@ -76,10 +69,8 @@
 @media (max-width: 700px) {
   .music-player {
     height: auto;
-    width: 100vw;
     align-items: center;
     align-content: center;
-    justify-content: space-between;
   }
 }
 
@@ -188,9 +179,8 @@
     font-size: 12px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    padding: 5px;
     height: 100%;
+    align-content: space-between;
     /* removes component outline on mobile click */
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -768,7 +758,7 @@
   .experiment-container {
     flex-direction: column;
     width: 100%;
-    max-height: 100vh;
+    /* max-height: 100vh; */
     max-width: 100vh;
     overflow: hidden;
   }
