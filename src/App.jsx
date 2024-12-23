@@ -17,6 +17,7 @@ import FlickrAPI from "./services/flickrService";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { MusicPlayerProvider } from "./components/MusicPlayerContext";
+import MusicPlayer from "./components/MusicPlayer";
 
 function App() {
   const pages = ["Discography", "Live Sets", "Visual Art", "Info"];
@@ -77,6 +78,7 @@ function App() {
                     <Route path="the_path" element={<ThePath />} />
                   </Routes>
                 </div>
+                {size.width < 700 && <MusicPlayer />}
               </div>
             </CssBaseline>
           </ThemeProvider>

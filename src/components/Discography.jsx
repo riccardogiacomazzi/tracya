@@ -139,7 +139,7 @@ const Discography = ({ size }) => {
                             align="left"
                             key={trackIndex}
                             // onClick={() => handlePlayerOpen(index)}
-                            onClick={() => playTrack(item.player)}
+                            onClick={() => playTrack(item, trackIndex)}
                           >
                             <b>{track.title}</b> {track.duration}
                           </Typography>

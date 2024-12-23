@@ -12,7 +12,6 @@ const Sidebar = ({ pages, size }) => {
 
   return (
     <div className="vertical-navigation">
-      {" "}
       {size.width > 700 && <MusicPlayer />}
       <div className="title-container" onClick={() => setSelectedPage()}>
         <Typography
