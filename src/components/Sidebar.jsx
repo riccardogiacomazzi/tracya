@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import MusicPlayer from "./MusicPlayer";
 
 const Sidebar = ({ pages, size }) => {
   const [selectedPage, setSelectedPage] = useState();
@@ -11,6 +12,7 @@ const Sidebar = ({ pages, size }) => {
 
   return (
     <div className="vertical-navigation">
+      {size.width > 700 && <MusicPlayer />}
       <div className="title-container" onClick={() => setSelectedPage()}>
         <Typography
           align="left"
@@ -27,7 +29,6 @@ const Sidebar = ({ pages, size }) => {
           </Link>
         </Typography>
       </div>
-
       <div className="pages-buttons-container">
         {pages.map((item, index) => (
           <Link
