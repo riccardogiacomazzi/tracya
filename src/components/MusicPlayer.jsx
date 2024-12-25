@@ -65,6 +65,7 @@ const MusicPlayer = () => {
         controls
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
+        onEnded={nextTrack}
         width="0"
         height="0"
         style={{ display: currentTrack ? "block" : "none" }}

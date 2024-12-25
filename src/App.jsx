@@ -14,10 +14,10 @@ import Info from "./components/Info";
 import Experiments from "./components/Experiments";
 import ThePath from "./components/ThePath";
 import FlickrAPI from "./services/flickrService";
-import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { MusicPlayerProvider } from "./components/MusicPlayerContext";
 import MusicPlayer from "./components/MusicPlayer";
+import "./App.css";
 
 function App() {
   const pages = ["Discography", "Live Sets", "Visual Art", "Info"];

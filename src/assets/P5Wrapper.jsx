@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import p5 from "p5";
+// import p5 from "p5";
+import p5 from "p5/lib/p5.min";
 
 const P5Wrapper = ({ sketch, canvasKey }) => {
   const sketchRef = useRef(null);

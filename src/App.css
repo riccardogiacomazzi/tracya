@@ -32,6 +32,13 @@
 :focus {
   outline: none !important;
 }
+
+/* MAIN */
+
+body {
+  background-color: #e2e6e689 !important;
+}
+
 /* components */
 
 .flexbox {

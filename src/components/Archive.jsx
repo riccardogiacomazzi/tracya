@@ -52,7 +52,7 @@ const Archive = ({ size }) => {
             key={index}
             expanded={eventOpen[index]}
             className="accordion-container"
-            sx={{ border: item === selectedEvent && size.width > 700 && "solid" }}
+            sx={{ border: item === selectedEvent && size.width > 700 && "solid", backgroundColor: "inherit" }}
           >
             <AccordionSummary
               expandIcon={eventOpen[index] === true ? <RemoveIcon /> : <AddIcon />}
