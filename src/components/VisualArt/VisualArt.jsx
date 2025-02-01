@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, Component } from "react";
 import { Box, Button, Typography, ImageList, ImageListItem } from "@mui/material";
-import bio from "../assets/bio";
-import P5Wrapper from "../assets/P5Wrapper";
-import sketchVisual from "../assets/sketchVisual";
+import bio from "../../assets/bio";
+import P5Wrapper from "../../assets/P5Wrapper";
+import sketchVisual from "../../assets/sketchVisual";
 
 const VisualArt = ({ itemData, size }) => {
   const [filteredByTag, setFilteredByTag] = useState();

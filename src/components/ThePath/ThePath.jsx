@@ -3,8 +3,8 @@ import ReactPlayer from "react-player";
 import { IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import P5Wrapper from "../assets/P5Wrapper";
-import sketchPath from "../assets/sketchPath";
+import P5Wrapper from "../../assets/P5Wrapper";
+import sketchPath from "../../assets/sketchPath";
 
 const ThePath = () => {
   const [canvasKey, setCanvasKey] = useState(0);

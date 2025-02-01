@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Typography, Box, IconButton } from "@mui/material";
 import ReactPlayer from "react-player";
-import liveSets from "../assets/liveSets";
+import liveSets from "../../assets/liveSets";
 
 const LiveSets = () => {
   const [live, setLive] = useState([]);

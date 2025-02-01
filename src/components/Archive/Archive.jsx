@@ -1,7 +1,7 @@
-import archive from "../assets/archive";
+import archive from "../../assets/archive";
 import ReactPlayer from "react-player";
-import P5Wrapper from "../assets/P5Wrapper";
-import sketchArchive from "../assets/sketchArchive";
+import P5Wrapper from "../../assets/P5Wrapper";
+import sketchArchive from "../../assets/sketchArchive";
 import { useEffect, useState } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";

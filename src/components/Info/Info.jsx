@@ -1,21 +1,25 @@
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import bio from "../assets/bio";
+import bio from "../../assets/bio";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Info = () => {
   const [imageLoad, setImageLoad] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const infoTextElement = document.querySelector(".info-text");
-      if (infoTextElement) {
-        infoTextElement.scrollIntoView({ behavior: "instant", block: "center" });
-      }
-    }, 10);
+    if (location.pathname === "/info") {
+      const timer = setTimeout(() => {
+        const infoTextElement = document.querySelector(".info-text");
+        if (infoTextElement) {
+          infoTextElement.scrollIntoView({ behavior: "instant", block: "center" });
+        }
+      }, 10);
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname]);
 
   // image loading fade in CSS
   const handleImageLoad = () => {

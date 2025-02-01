@@ -19,7 +19,7 @@ const bio = {
     { name: "Mail", link: "mailto:tracya0000@gmail.com" },
     { name: "Archive", link: `${baseUrl}/archive` },
 
-    { name: "Web Design", link: "mailto:riccardogiacomazzi93@gmail.com" },
+    { name: "Web Design", link: "https://github.com/riccardogiacomazzi" },
   ],
 };
 

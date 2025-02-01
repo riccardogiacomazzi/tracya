@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
-import { useMusicPlayer } from "./MusicPlayerContext.jsx";
+import { useMusicPlayer } from "../MusicPlayerContext.jsx";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import { Typography } from "@mui/material";
-import discography from "../assets/discography.js";
+import discography from "../../assets/discography.js";
 
 const MusicPlayer = () => {
   const {

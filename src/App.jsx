@@ -5,18 +5,18 @@ import { Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./theme";
-import Home from "./components/Home";
-import Discography from "./components/Discography";
-import LiveSets from "./components/LiveSets";
-import VisualArt from "./components/VisualArt";
-import Archive from "./components/Archive";
-import Info from "./components/Info";
-import Experiments from "./components/Experiments";
-import ThePath from "./components/ThePath";
+import Home from "./components/Home/Home";
+import Discography from "./components/Discography/Discography";
+import LiveSets from "./components/LiveSets/LiveSets";
+import VisualArt from "./components/VisualArt/VisualArt";
+import Archive from "./components/Archive/Archive";
+import Info from "./components/Info/Info";
+import Experiments from "./components/Experiments/Experiments";
+import ThePath from "./components/ThePath/ThePath";
 import FlickrAPI from "./services/flickrService";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import { MusicPlayerProvider } from "./components/MusicPlayerContext";
-import MusicPlayer from "./components/MusicPlayer";
+// import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import "./App.css";
 
 function App() {
@@ -69,7 +69,7 @@ function App() {
                 <Sidebar pages={pages} size={size} />
                 <div className="main-content">
                   <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home size={size} itemData={itemData} />} />
                     <Route path="/discography" element={<Discography size={size} />} />
                     <Route path="/live_sets" element={<LiveSets />} />
                     <Route path="/visual_art" element={<VisualArt itemData={itemData} size={size} />} />

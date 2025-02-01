@@ -1,6 +1,6 @@
-import P5Wrapper from "../assets/P5Wrapper";
-import sketch from "../assets/sketch";
-import generator2 from "..//assets/generator2";
+import P5Wrapper from "../../assets/P5Wrapper";
+import sketch from "../../assets/sketch";
+import generator2 from "../../assets/generator2";
 import { useEffect, useState } from "react";
 
 const Experiments = ({}) => {

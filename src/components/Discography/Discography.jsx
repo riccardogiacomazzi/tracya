@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player";
-import { useMusicPlayer } from "./MusicPlayerContext";
-import discography from "../assets/discography";
+import { useMusicPlayer } from "../MusicPlayerContext";
+import discography from "../../assets/discography";
 import { Typography, Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
