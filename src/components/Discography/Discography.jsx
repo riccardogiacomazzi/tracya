@@ -3,6 +3,7 @@ import { useMusicPlayer } from "../MusicPlayerContext";
 import discography from "../../assets/discography";
 import { Typography, Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import "./Discography.css";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -15,6 +16,11 @@ const Discography = ({ size }) => {
 
   const [height, setHeight] = useState([]);
   const refs = useRef([]);
+
+  useEffect(() => {
+    console.log(playTrack);
+    console.log();
+  }, [playTrack]);
 
   useEffect(() => {
     const fetch = () => {
@@ -132,15 +138,22 @@ const Discography = ({ size }) => {
                         {item.tracklist.map((track, trackIndex) => (
                           <Typography
                             sx={{
+                              transition: "background-color 0.3s, color 0.3s",
+                              backgroundColor: playTrack?.title === track.title ? "black" : "transparent",
+                              color: playTrack?.title === track.title ? "white" : "black",
+                              width: "max-content",
+                              px: "5px",
                               ":hover": {
                                 cursor: "pointer",
+                                backgroundColor: "black",
+                                color: "white",
                               },
                             }}
                             align="left"
                             key={trackIndex}
-                            // onClick={() => handlePlayerOpen(index)}
                             onClick={() => playTrack(item, trackIndex)}
                           >
+                            {playTrack?.title === track.title && ">"}
                             <b>{track.title}</b> {track.duration}
                           </Typography>
                         ))}

@@ -6,7 +6,9 @@
 
 @media (max-width: 700px) {
   .home-pages {
-    width: 100vw;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 

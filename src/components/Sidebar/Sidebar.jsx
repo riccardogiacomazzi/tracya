@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
+import "./Sidebar.css";
 
 const Sidebar = ({ pages, size }) => {
   const [selectedPage, setSelectedPage] = useState();
