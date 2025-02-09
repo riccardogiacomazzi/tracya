@@ -23,7 +23,7 @@
 
 @media (max-width: 700px) {
   .home-pages .visual-art {
-    max-height: 200vh;
+    max-height: none;
   }
 }
 

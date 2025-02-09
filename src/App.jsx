@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useWindowSize } from "@uidotdev/usehooks";
-import { Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./theme";
@@ -16,7 +15,6 @@ import ThePath from "./components/ThePath/ThePath";
 import FlickrAPI from "./services/flickrService";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { MusicPlayerProvider } from "./components/MusicPlayerContext";
-// import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import "./App.css";
 
 function App() {
@@ -36,7 +34,7 @@ function App() {
 
   const size = useWindowSize();
 
-  // determines app height accounting for the browser's navbar
+  // determines app height for the browser's navbar
   useEffect(() => {
     const handleResize = () => {
       setAppHeight(window.innerHeight);
@@ -51,7 +49,6 @@ function App() {
   return (
     <MusicPlayerProvider>
       <div
-        // id="root"
         style={{
           maxWidth: "100vw",
           width: "100vw",

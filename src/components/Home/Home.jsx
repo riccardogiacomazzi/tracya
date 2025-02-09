@@ -6,6 +6,7 @@ import LiveSets from "../LiveSets/LiveSets";
 import "./Home.css";
 import { Typography } from "@mui/material";
 import { Height } from "@mui/icons-material";
+import { useMusicPlayer } from "../MusicPlayerContext";
 
 const Home = ({ size, itemData }) => {
   return (

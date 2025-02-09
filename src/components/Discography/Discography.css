@@ -84,6 +84,7 @@
   .info-container-grid {
     margin-left: 3px;
     margin-right: 3px;
+    display: flex;
   }
 }
 
@@ -95,7 +96,7 @@
 
 @media (max-width: 700px) {
   .info-container-grid .item-tracklist {
-    justify-content: space-between;
+    width: 50vw;
   }
 }
 
@@ -103,6 +104,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media (max-width: 700px) {
+  .item-genre {
+    width: 50vw;
+    align-items: flex-end;
+  }
 }
 
 .player-container {

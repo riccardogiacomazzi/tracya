@@ -3,6 +3,7 @@ import { useMusicPlayer } from "../MusicPlayerContext";
 import discography from "../../assets/discography";
 import { Typography, Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import "./Discography.css";
 
 import { useState, useEffect, useRef } from "react";
@@ -12,15 +13,10 @@ const Discography = ({ size }) => {
   const [playerOpen, setPlayerOpen] = useState([]);
   const [imageLoad, setImageLoad] = useState(false);
 
-  const { playTrack } = useMusicPlayer();
+  const { playTrack, currentTrack, playingIndex } = useMusicPlayer();
 
   const [height, setHeight] = useState([]);
   const refs = useRef([]);
-
-  useEffect(() => {
-    console.log(playTrack);
-    console.log();
-  }, [playTrack]);
 
   useEffect(() => {
     const fetch = () => {
@@ -139,9 +135,16 @@ const Discography = ({ size }) => {
                           <Typography
                             sx={{
                               transition: "background-color 0.3s, color 0.3s",
-                              backgroundColor: playTrack?.title === track.title ? "black" : "transparent",
-                              color: playTrack?.title === track.title ? "white" : "black",
-                              width: "max-content",
+                              backgroundColor:
+                                currentTrack.title === item.title && playingIndex == trackIndex
+                                  ? "black"
+                                  : "transparent",
+                              color:
+                                currentTrack.title === item.title && playingIndex == trackIndex ? "white" : "black",
+                              display: "flex",
+                              justifyContent: "space-between",
+                              alignItems: "center",
+                              width: "100%",
                               px: "5px",
                               ":hover": {
                                 cursor: "pointer",
@@ -153,8 +156,10 @@ const Discography = ({ size }) => {
                             key={trackIndex}
                             onClick={() => playTrack(item, trackIndex)}
                           >
-                            {playTrack?.title === track.title && ">"}
-                            <b>{track.title}</b> {track.duration}
+                            {currentTrack.title === item.title && playingIndex == trackIndex && (
+                              <PlayArrowIcon sx={{ fontSize: "12px" }} />
+                            )}
+                            <b>{track.title}</b> <p>{track.duration}</p>
                           </Typography>
                         ))}
                       </div>
