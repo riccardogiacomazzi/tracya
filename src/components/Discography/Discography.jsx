@@ -13,10 +13,14 @@ const Discography = ({ size }) => {
   const [playerOpen, setPlayerOpen] = useState([]);
   const [imageLoad, setImageLoad] = useState(false);
 
-  const { playTrack, currentTrack, playingIndex } = useMusicPlayer();
+  const { playTrack, currentTrack, playingIndex, isPlaying } = useMusicPlayer();
 
   const [height, setHeight] = useState([]);
   const refs = useRef([]);
+
+  useEffect(() => {
+    console.log(currentTrack);
+  }, [currentTrack]);
 
   useEffect(() => {
     const fetch = () => {
@@ -78,129 +82,120 @@ const Discography = ({ size }) => {
       <div className="disc-release-container">
         {releases &&
           releases.map((item, index) => (
-            <div
-              key={index}
-              className="release"
-              ref={(el) => (refs.current[index] = el)}
-              style={{
-                height: height.length === releases.length && `${height[index]}px`,
-                minHeight:
-                  playerOpen[index] &&
-                  height.length === releases.length &&
-                  height[index] < 460 &&
-                  size.width < 700 &&
-                  "500px",
-                transition: "min-height 0.5s ease",
-                maxHeight: height[index],
-              }}
-            >
-              {playerOpen[index] === false ? (
-                <>
-                  {size.width < 700 && (
-                    <Typography>
-                      <b>
-                        {item.artist} - {item.title}
-                      </b>
-                    </Typography>
-                  )}
-                  <div className="image-container" style={{ height: "250px" }}>
-                    <img onClick={() => handlePlayerOpen(index)} src={item.thumb} className="image-release" />
-                    <br />
-                  </div>
-
-                  <Box className="release-info">
-                    <div>
-                      <Typography
-                        sx={{
-                          wordWrap: "break-word",
-                          overflowWrap: "break-word",
-                          whiteSpace: "normal",
-                          marginTop: size.width < 700 && "10px",
-                        }}
-                      >
-                        {size.width > 700 && (
-                          <>
-                            <b>
-                              {item.artist} - {item.title}
-                            </b>
-                            <br />
-                          </>
-                        )}
-                        {item.year}
-                      </Typography>
-                    </div>
-                    <Box className="info-container-grid">
-                      <div className="item-tracklist">
-                        {item.tracklist.map((track, trackIndex) => (
-                          <Typography
-                            sx={{
-                              transition: "background-color 0.3s, color 0.3s",
-                              backgroundColor:
-                                currentTrack.title === item.title && playingIndex == trackIndex
-                                  ? "black"
-                                  : "transparent",
-                              color:
-                                currentTrack.title === item.title && playingIndex == trackIndex ? "white" : "black",
-                              display: "flex",
-                              justifyContent: "space-between",
-                              alignItems: "center",
-                              width: "100%",
-                              px: "5px",
-                              ":hover": {
-                                cursor: "pointer",
-                                backgroundColor: "black",
-                                color: "white",
-                              },
-                            }}
-                            align="left"
-                            key={trackIndex}
-                            onClick={() => playTrack(item, trackIndex)}
-                          >
-                            {currentTrack.title === item.title && playingIndex == trackIndex && (
-                              <PlayArrowIcon sx={{ fontSize: "12px" }} />
-                            )}
-                            <b>{track.title}</b> <p>{track.duration}</p>
-                          </Typography>
-                        ))}
-                      </div>
-                      <div className="item-genre">
-                        <div>
-                          <Typography align="right">
-                            {item.styles.map((style, index) => (
-                              <span key={index}>{style} </span>
-                            ))}
-                          </Typography>
-                        </div>
-                        <Typography align="right" sx={{ marginTop: "20px" }}>
-                          <i>{item.label}</i>
-                          <br />
-                          <i>{item.labels && item.labels.map((cat, index) => cat.catno)}</i>
-                        </Typography>
-                      </div>
-                    </Box>
-                  </Box>
-                  <Box className="button-container"></Box>
-                </>
-              ) : (
-                <>
-                  <Box className="player-container">
-                    {item.player && (
-                      <ReactPlayer
-                        url={item.player}
-                        width="100%"
-                        height="100%"
-                        playing={false} // Controls if the player should play automatically
-                        controls={size.width > 700 ? false : true} // Show controls
-                      />
+            <div className="release-container">
+              {size.width > 700 && (
+                <div className="ep-title-info">
+                  <Typography
+                    sx={{
+                      marginTop: size.width < 700 && "10px",
+                    }}
+                  >
+                    {size.width > 700 && (
+                      <>
+                        <b>
+                          {item.artist} - {item.title}
+                        </b>
+                        <br />
+                      </>
                     )}
-                  </Box>
-                  <Box>
-                    <IconButton onClick={() => handlePlayerOpen(index)}>
-                      <CloseIcon />
-                    </IconButton>
-                  </Box>
-                </>
+                    {item.year}
+                  </Typography>
+                </div>
               )}
+              <div
+                key={index}
+                className="release"
+                ref={(el) => (refs.current[index] = el)}
+                style={{
+                  height: height.length === releases.length && `${height[index]}px`,
+                  minHeight:
+                    playerOpen[index] &&
+                    height.length === releases.length &&
+                    height[index] < 460 &&
+                    size.width < 700 &&
+                    "500px",
+                  transition: "min-height 0.5s ease",
+                  maxHeight: height[index],
+                }}
+              >
+                {playerOpen[index] === false ? (
+                  <>
+                    {size.width < 700 && (
+                      <Typography>
+                        <b>
+                          {item.artist} - {item.title}
+                        </b>
+                      </Typography>
+                    )}
+
+                    <div className="image-container" style={{ height: "250px" }}>
+                      <img onClick={() => handlePlayerOpen(index)} src={item.thumb} className="image-release" />
+                      <br />
+                    </div>
+
+                    <Box className="release-info">
+                      <Box className="info-container-grid">
+                        <div className="item-tracklist">
+                          {item.tracklist.map((track, trackIndex) => (
+                            <Typography
+                              sx={{
+                                transition: "background-color 0.3s, color 0.3s",
+                                backgroundColor:
+                                  currentTrack.title === item.title && playingIndex == trackIndex
+                                    ? "black"
+                                    : "transparent",
+                                color:
+                                  currentTrack.title === item.title && playingIndex == trackIndex ? "white" : "black",
+                                display: "flex",
+                                height: "100%",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                                width: "100%",
+                                px: "5px",
+                                py: "5px",
+                                ":hover": {
+                                  cursor: "pointer",
+                                  backgroundColor: "black",
+                                  color: "white",
+                                },
+                              }}
+                              align="left"
+                              key={trackIndex}
+                              onClick={() => playTrack(item, trackIndex)}
+                            >
+                              <div className="title">
+                                <div>{trackIndex + 1 + "."}</div>
+                                <p>{track.title}</p>
+                              </div>
+
+                              <p>{track.duration}</p>
+                            </Typography>
+                          ))}
+                        </div>
+                      </Box>
+                    </Box>
+                  </>
+                ) : (
+                  <>
+                    <Box className="player-container">
+                      {item.player && (
+                        <ReactPlayer
+                          url={item.player}
+                          width="100%"
+                          height="100%"
+                          playing={false}
+                          controls={size.width > 700 ? false : true}
+                        />
+                      )}
+                    </Box>
+                    <Box>
+                      <IconButton onClick={() => handlePlayerOpen(index)}>
+                        <CloseIcon />
+                      </IconButton>
+                    </Box>
+                  </>
+                )}
+              </div>
             </div>
           ))}
       </div>
