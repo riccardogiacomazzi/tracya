@@ -71,7 +71,7 @@ const VisualArt = ({ itemData, size }) => {
       <Box
         className="box-tag"
         sx={{
-          width: selectedImage ? (size.width > 700 ? "25%" : "100%") : size.width > 700 ? "50%" : "100%",
+          width: selectedImage ? (size.width > 768 ? "25%" : "100%") : size.width > 768 ? "50%" : "100%",
           height: "105%",
           cursor: selectedImage ? "pointer" : "zoom-in",
         }}
@@ -88,7 +88,7 @@ const VisualArt = ({ itemData, size }) => {
                       <P5Wrapper sketch={sketchVisual} />
                     </div>
                   )}
-                  {/* {size.width < 700 && descriptionVisible[index] && item.details.description && (
+                  {/* {size.width < 768 && descriptionVisible[index] && item.details.description && (
                     <div className="text">
                       <Typography align="center" sx={{ padding: "10px" }}>
                         {item.details.description}
@@ -105,7 +105,7 @@ const VisualArt = ({ itemData, size }) => {
       </Box>
 
       {/* big photo container - rendered on WEB and only when a picture is selected */}
-      {size.width > 700 && selectedImage && (
+      {size.width > 768 && selectedImage && (
         <Box className="photo-info-container">
           <Box className="visual-info">
             <Typography align="left">{bio.visualArt}</Typography>
@@ -115,7 +115,7 @@ const VisualArt = ({ itemData, size }) => {
           </Box>
           <Box className="big-photo-container-works">
             {/* conditionally renderes big image clicked */}
-            {size.width > 700 && (
+            {size.width > 768 && (
               <img
                 className={zoom === false ? "image-big" : "image-big-zoom-works"}
                 style={{ marginLeft: " auto", marginRight: "auto", cursor: zoom === true ? "zoom-out" : "zoom-in" }}

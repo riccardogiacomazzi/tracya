@@ -120,7 +120,7 @@ const generator2 = (p5) => {
   };
 
   const drawDistortedCircle = (x, y, r, colors) => {
-    const steps = p5.width > 700 ? 200 : 15; // Reduced number of gradient steps for better performance
+    const steps = p5.width > 768 ? 200 : 15; // Reduced number of gradient steps for better performance
 
     for (let i = 0; i < steps; i++) {
       const inter = i / steps;

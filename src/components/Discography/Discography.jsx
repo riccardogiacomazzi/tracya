@@ -38,7 +38,7 @@ const Discography = ({ size }) => {
 
   // set .release div height
   useEffect(() => {
-    if (refs.current.length > 0 && height.length === 0 && size.width < 700) {
+    if (refs.current.length > 0 && height.length === 0 && size.width < 768) {
       setTimeout(() => {
         const newHeight = refs.current.map((ref) => {
           if (ref) {
@@ -83,14 +83,14 @@ const Discography = ({ size }) => {
         {releases &&
           releases.map((item, index) => (
             <div className="release-container">
-              {size.width > 700 && (
+              {size.width > 768 && (
                 <div className="ep-title-info">
                   <Typography
                     sx={{
-                      marginTop: size.width < 700 && "10px",
+                      marginTop: size.width < 768 && "10px",
                     }}
                   >
-                    {size.width > 700 && (
+                    {size.width > 768 && (
                       <>
                         <b>
                           {item.artist} - {item.title}
@@ -112,7 +112,7 @@ const Discography = ({ size }) => {
                     playerOpen[index] &&
                     height.length === releases.length &&
                     height[index] < 460 &&
-                    size.width < 700 &&
+                    size.width < 768 &&
                     "500px",
                   transition: "min-height 0.5s ease",
                   maxHeight: height[index],
@@ -120,7 +120,7 @@ const Discography = ({ size }) => {
               >
                 {playerOpen[index] === false ? (
                   <>
-                    {size.width < 700 && (
+                    {size.width < 768 && (
                       <Typography>
                         <b>
                           {item.artist} - {item.title}
@@ -184,7 +184,7 @@ const Discography = ({ size }) => {
                           width="100%"
                           height="100%"
                           playing={false}
-                          controls={size.width > 700 ? false : true}
+                          controls={size.width > 768 ? false : true}
                         />
                       )}
                     </Box>
@@ -199,7 +199,7 @@ const Discography = ({ size }) => {
             </div>
           ))}
       </div>
-      {size.width > 700 && (
+      {size.width > 768 && (
         <Box className="disc-img-container">
           <img
             className={`disc-img ${imageLoad ? "loaded" : ""}`}

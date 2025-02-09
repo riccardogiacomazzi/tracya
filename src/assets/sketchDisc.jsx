@@ -40,7 +40,7 @@ const sketchDisc = (p5) => {
       p5.strokeWeight(str_wei);
       p5.stroke(p5.random(colorselet));
 
-      if (p5.windowWidth > 700) {
+      if (p5.windowWidth > 768) {
         if (films % 3 === 0) {
           p5.drawingContext.shadowColor = p5.color(p5.random(colors_b) + "1a");
           p5.drawingContext.shadowOffsetX = str_wei;

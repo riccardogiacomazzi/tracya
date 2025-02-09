@@ -4,7 +4,7 @@
   justify-content: start;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .home-pages {
     width: 100%;
     padding-left: 5px;
@@ -21,7 +21,7 @@
   overflow: clip;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .home-pages .visual-art {
     max-height: none;
   }

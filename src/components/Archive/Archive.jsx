@@ -44,7 +44,7 @@ const Archive = ({ size }) => {
   return (
     <div
       className="archive-container"
-      style={{ flexDirection: size.width > 700 && "row", overflow: size.width < 700 && mobileCanva && "hidden" }}
+      style={{ flexDirection: size.width > 768 && "row", overflow: size.width < 768 && mobileCanva && "hidden" }}
     >
       <div className="box-gigs">
         {sortedArchive.map((item, index) => (
@@ -52,7 +52,7 @@ const Archive = ({ size }) => {
             key={index}
             expanded={eventOpen[index]}
             className="accordion-container"
-            sx={{ border: item === selectedEvent && size.width > 700 && "solid", backgroundColor: "inherit" }}
+            sx={{ border: item === selectedEvent && size.width > 768 && "solid", backgroundColor: "inherit" }}
           >
             <AccordionSummary
               expandIcon={eventOpen[index] === true ? <RemoveIcon /> : <AddIcon />}
@@ -73,7 +73,7 @@ const Archive = ({ size }) => {
               </div>
             </AccordionSummary>
             <AccordionDetails>
-              {size.width < 700 && selectedEvent && (
+              {size.width < 768 && selectedEvent && (
                 <div>
                   {item.img && (
                     <div className="image-up">
@@ -109,7 +109,7 @@ const Archive = ({ size }) => {
       </div>
 
       <div className="button" onClick={handleButtonClick}>
-        {size.width < 700 && (
+        {size.width < 768 && (
           <ContrastIcon
             sx={{
               transform: mobileCanva ? "rotate(180deg)" : "rotate(0deg)",
@@ -120,7 +120,7 @@ const Archive = ({ size }) => {
       </div>
 
       {/* lateral images WEB version */}
-      {size.width > 700 && (
+      {size.width > 768 && (
         <div className="imgs-container">
           {selectedEvent && selectedEvent.img && (
             <div className="image-up">

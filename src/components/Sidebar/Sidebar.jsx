@@ -13,15 +13,15 @@ const Sidebar = ({ pages, size }) => {
 
   return (
     <div className="vertical-navigation">
-      {size.width > 700 && <MusicPlayer />}
+      {size.width > 768 && <MusicPlayer />}
       <div className="title-container" onClick={() => setSelectedPage()}>
-        {size.width < 700 && <MusicPlayer />}
+        {size.width < 768 && <MusicPlayer />}
         <Typography
           align="left"
           fontFamily={"Agnes"}
-          fontSize={size.width > 700 ? "70px" : "30px"}
+          fontSize={size.width > 768 ? "70px" : "30px"}
           sx={{
-            writingMode: size.width > 700 ? "vertical-rl" : "",
+            writingMode: size.width > 768 ? "vertical-rl" : "",
             textOrientation: "upright",
             outline: "none",
             marginBottom: "-5px",
@@ -42,9 +42,9 @@ const Sidebar = ({ pages, size }) => {
           >
             <Typography
               onClick={() => handlePageSelect(item)}
-              fontSize={size.width > 700 && "14px"}
+              fontSize={size.width > 768 && "14px"}
               align={"center"}
-              style={{ textDecoration: selectedPage === item && "underline", height: size.width > 700 && "30px" }}
+              style={{ textDecoration: selectedPage === item && "underline", height: size.width > 768 && "30px" }}
             >
               {item.toLocaleUpperCase()}
             </Typography>

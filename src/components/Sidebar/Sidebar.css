@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .main .vertical-navigation {
     height: 10%;
     width: 97%;
@@ -31,7 +31,7 @@
   align-items: center;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .title-container {
     width: 40%;
     flex-direction: column;
@@ -52,7 +52,7 @@
   justify-content: center;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .pages-buttons-container {
     flex-grow: 1;
     font-size: 12px;
@@ -110,7 +110,7 @@
   display: block;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .main .main-content .image {
     object-fit: cover;
   }

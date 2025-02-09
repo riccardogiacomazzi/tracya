@@ -27,12 +27,21 @@ const Home = ({ size, itemData }) => {
         <LiveSets className="main-content" size={size} />
       </div>
       <div className="visual-art">
-        <Link to={"/visual_art"} style={{ color: "black" }}>
-          <Typography className="pages-text" fontFamily={"Agnes"} fontSize={36}>
-            Visual Art
-          </Typography>
-          <VisualArt itemData={itemData} size={size} />
-        </Link>
+        {size.width > 768 ? (
+          <Link to={"/visual_art"} style={{ color: "black" }}>
+            <Typography className="pages-text" fontFamily={"Agnes"} fontSize={36}>
+              Visual Art
+            </Typography>
+            <VisualArt itemData={itemData} size={size} />
+          </Link>
+        ) : (
+          <>
+            <Typography className="pages-text" fontFamily={"Agnes"} fontSize={36}>
+              Visual Art
+            </Typography>
+            <VisualArt itemData={itemData} size={size} />
+          </>
+        )}
       </div>
       <div className="page">
         <Typography className="pages-text" fontFamily={"Agnes"} fontSize={36}>
