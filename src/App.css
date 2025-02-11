@@ -52,7 +52,6 @@ body {
   width: 100vw;
   height: 98vh;
   display: flex;
-  padding: 10px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -67,9 +66,11 @@ body {
 
 .music-player {
   width: 100%;
-  height: 50px;
+  height: 75px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
 }
 
@@ -82,12 +83,10 @@ body {
 }
 
 .music-player .buttons-container {
-  height: 50%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Ensures left, center, and right alignment */
   align-items: center;
-  justify-items: center;
   position: relative;
 }
 
@@ -120,6 +119,30 @@ body {
   100% {
     transform: translateX(-150%); /* End off-screen to the left */
   }
+}
+
+.player-progress-bar {
+  border: solid black;
+  width: 100%;
+  height: 25px;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: black;
+  transition: width 0.2s linear;
+}
+
+.progress-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide the input but keep it functional */
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

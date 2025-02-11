@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import { useMusicPlayer } from "../MusicPlayerContext.jsx";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -7,6 +7,7 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import { Typography } from "@mui/material";
 import discography from "../../assets/discography.js";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 const MusicPlayer = () => {
   const {
@@ -19,7 +20,13 @@ const MusicPlayer = () => {
     nextTrack,
     prevTrack,
   } = useMusicPlayer();
+
+  const size = useWindowSize();
+
   const playerRef = useRef(null);
+
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   let currentTrackUrl = currentTrack?.tracklist?.[playingIndex]?.url || currentTrack?.player || "";
 
@@ -31,6 +38,30 @@ const MusicPlayer = () => {
       setCurrentTrack(randomAlbum);
     }
   }, []);
+
+  // reset bar on new track loaded
+  useEffect(() => {
+    setProgress(0);
+  }, [currentTrack]);
+
+  // Update progress bar based on track progress
+  const handleProgress = (state) => {
+    setProgress(state.played * 100);
+  };
+
+  // Get duration of the track
+  const handleDuration = (duration) => {
+    setDuration(duration);
+  };
+
+  // handle advancing in progress bar
+  const handleSeek = (e) => {
+    const newProgress = parseFloat(e.target.value);
+    setProgress(newProgress);
+    if (playerRef.current) {
+      playerRef.current.seekTo((newProgress / 100) * duration, "seconds");
+    }
+  };
 
   return (
     <div>
@@ -50,12 +81,27 @@ const MusicPlayer = () => {
           <div className="scrolling-text">
             {currentTrack && currentTrack.tracklist[playingIndex].title && isPlaying && (
               <Typography fontSize={17} fontFamily={"Heming"}>
-                Playing: "{currentTrack.tracklist[playingIndex].title.toUpperCase()}" from{" "}
+                Playing: {currentTrack.tracklist[playingIndex].title.toUpperCase()} from{" "}
                 {currentTrack.title.toUpperCase()}
               </Typography>
-            )}{" "}
+            )}
           </div>
         </div>
+
+        {size.width > 768 && (
+          <div className="player-progress-bar">
+            <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              step="0.1"
+              value={progress}
+              onChange={handleSeek}
+              className="progress-slider"
+            />
+          </div>
+        )}
       </div>
 
       <ReactPlayer
@@ -65,6 +111,8 @@ const MusicPlayer = () => {
         controls
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
+        onDuration={handleDuration}
+        onProgress={handleProgress}
         onEnded={nextTrack}
         width="0"
         height="0"

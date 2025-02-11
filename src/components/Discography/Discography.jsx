@@ -19,10 +19,6 @@ const Discography = ({ size }) => {
   const refs = useRef([]);
 
   useEffect(() => {
-    console.log(currentTrack);
-  }, [currentTrack]);
-
-  useEffect(() => {
     const fetch = () => {
       let sortedDiscography = discography.sort((a, b) => b.year - a.year);
       setReleases(sortedDiscography);
@@ -125,6 +121,8 @@ const Discography = ({ size }) => {
                         <b>
                           {item.artist} - {item.title}
                         </b>
+                        <br />
+                        <p>{item.year}</p>
                       </Typography>
                     )}
 
@@ -199,15 +197,6 @@ const Discography = ({ size }) => {
             </div>
           ))}
       </div>
-      {size.width > 768 && (
-        <Box className="disc-img-container">
-          <img
-            className={`disc-img ${imageLoad ? "loaded" : ""}`}
-            src="https://live.staticflickr.com/65535/53499079679_09e89593e7_o.jpg"
-            onLoad={handleImageLoad}
-          />
-        </Box>
-      )}
     </div>
   );
 };
