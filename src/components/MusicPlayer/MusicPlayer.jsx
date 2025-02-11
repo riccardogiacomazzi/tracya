@@ -19,13 +19,13 @@ const MusicPlayer = () => {
     setPlayingIndex,
     nextTrack,
     prevTrack,
+    progress,
+    setProgress,
+    playerRef,
   } = useMusicPlayer();
 
   const size = useWindowSize();
 
-  const playerRef = useRef(null);
-
-  const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
 
   let currentTrackUrl = currentTrack?.tracklist?.[playingIndex]?.url || currentTrack?.player || "";
@@ -62,6 +62,19 @@ const MusicPlayer = () => {
       playerRef.current.seekTo((newProgress / 100) * duration, "seconds");
     }
   };
+
+  useEffect(() => {
+    if (!playerRef.current) return;
+
+    const interval = setInterval(() => {
+      if (playerRef.current) {
+        const played = playerRef.current.getCurrentTime() / playerRef.current.getDuration();
+        setProgress(played * 100);
+      }
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [playerRef, currentTrack]);
 
   return (
     <div>

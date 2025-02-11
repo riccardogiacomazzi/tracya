@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useRef } from "react";
 
 const MusicPlayerContext = createContext();
 
@@ -8,6 +8,8 @@ export const MusicPlayerProvider = ({ children }) => {
   const [currentTrack, setCurrentTrack] = useState(null);
   const [playingIndex, setPlayingIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const playerRef = useRef(null);
 
   const playlist = currentTrack?.tracklist || []; // Tracklist from `currentTrack`
 
@@ -29,12 +31,21 @@ export const MusicPlayerProvider = ({ children }) => {
     setIsPlaying(false);
   };
 
+  const updateProgress = () => {
+    if (playerRef.current) {
+      const played = playerRef.current.getCurrentTime() / playerRef.current.getDuration();
+      setProgress(played * 100);
+    }
+  };
+
   return (
     <MusicPlayerContext.Provider
       value={{
         currentTrack,
         isPlaying,
         playingIndex,
+        progress,
+        setProgress,
         setPlayingIndex,
         setCurrentTrack,
         setIsPlaying,
@@ -42,6 +53,8 @@ export const MusicPlayerProvider = ({ children }) => {
         pauseTrack,
         nextTrack,
         prevTrack,
+        updateProgress,
+        playerRef,
       }}
     >
       {children}
