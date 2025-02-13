@@ -17,12 +17,8 @@ const ThePath = () => {
   const handleButtonClick = (value) => {
     if (value < 0 && artworkIndex >= 0) {
       setArtworkIndex(artworkIndex + value);
-      console.log(artworkIndex);
     } else if (value > 0) {
-      console.log(value);
-
       setArtworkIndex(artworkIndex + value);
-      console.log(artworkIndex);
     }
   };
 

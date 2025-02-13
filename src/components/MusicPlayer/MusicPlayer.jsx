@@ -40,9 +40,9 @@ const MusicPlayer = () => {
   }, []);
 
   // reset bar on new track loaded
-  useEffect(() => {
+  const handleChange = () => {
     setProgress(0);
-  }, [currentTrack]);
+  };
 
   // Update progress bar based on track progress
   const handleProgress = (state) => {
@@ -59,7 +59,7 @@ const MusicPlayer = () => {
     const newProgress = parseFloat(e.target.value);
     setProgress(newProgress);
     if (playerRef.current) {
-      playerRef.current.seekTo((newProgress / 100) * duration, "seconds");
+      playerRef.current.seekTo((newProgress / 100) * duration);
     }
   };
 
@@ -74,7 +74,7 @@ const MusicPlayer = () => {
     }, 500);
 
     return () => clearInterval(interval);
-  }, [playerRef, currentTrack]);
+  }, [currentTrack]);
 
   return (
     <div>
@@ -90,20 +90,21 @@ const MusicPlayer = () => {
             <SkipNextIcon />
           </div>
         </div>
-        <div className="text-container">
-          <div className="scrolling-text">
-            {currentTrack && currentTrack.tracklist[playingIndex].title && isPlaying && (
-              <Typography fontSize={17} fontFamily={"Heming"}>
-                Playing: {currentTrack.tracklist[playingIndex].title.toUpperCase()} from{" "}
-                {currentTrack.title.toUpperCase()}
-              </Typography>
-            )}
-          </div>
-        </div>
 
         {size.width > 768 && (
           <div className="player-progress-bar">
             <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+
+            <div className="text-container">
+              <div className="scrolling-text">
+                {currentTrack && currentTrack.tracklist[playingIndex].title && (
+                  <Typography fontSize={17} fontFamily={"Heming"}>
+                    Playing: {currentTrack.tracklist[playingIndex].title.toUpperCase()} from{" "}
+                    {currentTrack.title.toUpperCase()}
+                  </Typography>
+                )}
+              </div>
+            </div>
             <input
               type="range"
               min="0"
@@ -127,6 +128,7 @@ const MusicPlayer = () => {
         onDuration={handleDuration}
         onProgress={handleProgress}
         onEnded={nextTrack}
+        onChange={handleChange}
         width="0"
         height="0"
         style={{ display: currentTrack ? "block" : "none" }}
