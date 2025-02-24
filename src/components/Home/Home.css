@@ -18,7 +18,7 @@
 
 .home-pages .visual-art {
   max-height: 90vh;
-  overflow: clip;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {

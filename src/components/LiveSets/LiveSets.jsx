@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Typography, Box, IconButton } from "@mui/material";
 import ReactPlayer from "react-player";
 import liveSets from "../../assets/liveSets";
+import "./LiveSets.css";
 
 const LiveSets = () => {
   const [live, setLive] = useState([]);

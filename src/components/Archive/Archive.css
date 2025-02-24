@@ -1,0 +1,146 @@
+/* ARCHIVE */
+
+.archive-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .archive-container {
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: flex-start; /* Adjusts content alignment */
+    position: relative;
+  }
+
+  .archive-container .button {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .archive-container .canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.box-gigs {
+  height: 100%;
+  width: 30%;
+  text-align: left;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@media (max-width: 768px) {
+  .box-gigs {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.box-gigs::-webkit-scrollbar {
+  display: none;
+}
+
+.imgs-container {
+  width: 50%;
+  height: 100%;
+  flex-grow: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-up {
+  min-height: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 0.5px solid;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .image-up {
+    border: none;
+  }
+}
+
+.image-up-video {
+  min-height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .image-up-video {
+    height: 100%;
+  }
+}
+
+.image-up .img {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+
+.image-down {
+  flex-grow: 1;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  object-fit: fill;
+  border: 0.5px solid;
+  position: relative;
+}
+
+.image-down .player {
+  width: 70%;
+  max-height: auto;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1px;
+}
+
+.accordion-container {
+  border: 0.5px solid;
+  margin-bottom: 5px;
+}
+
+.accordion-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

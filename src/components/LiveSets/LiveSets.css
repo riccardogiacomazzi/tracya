@@ -1,0 +1,39 @@
+/* LIVESETS */
+.live-grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .live-grid {
+    grid-template-columns: 1fr;
+    overflow: auto;
+  }
+}
+
+.grid-item {
+  border: 0.5px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .grid-item {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.grid-item .info {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5px;
+  margin-right: 5px;
+}

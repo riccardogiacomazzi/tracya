@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import bio from "../../assets/bio";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import "./Info.css";
 
 const Info = () => {
   const [imageLoad, setImageLoad] = useState(false);
