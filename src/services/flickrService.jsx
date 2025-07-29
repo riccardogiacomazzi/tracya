@@ -29,7 +29,7 @@ const FlickrPhotos = async () => {
 
       const small = getSize("Small", "Thumbnail", "Square");
       const large = getSize("Large", "Medium 800", "Medium 640", "Medium");
-      const original = getSize("Original", "Large", "Medium 800"); // optional fallback, not required
+      const original = getSize("Original", "Large", "Medium 800");
 
       if (!small && !large) {
         console.warn(`No usable sizes found for photo ID: ${photoId}`);
