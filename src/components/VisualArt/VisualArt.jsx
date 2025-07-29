@@ -121,8 +121,8 @@ const VisualArt = ({ itemData, size }) => {
                 className={zoom === false ? "image-big" : "image-big-zoom-works"}
                 style={{ marginLeft: " auto", marginRight: "auto", cursor: zoom === true ? "zoom-out" : "zoom-in" }}
                 onClick={handleClickZoom}
-                srcSet={`${selectedImage.img.original}`}
-                src={`${selectedImage.img.original}`}
+                srcSet={`${selectedImage.img.original || selectedImage.img.large}`}
+                src={`${selectedImage.img.original || selectedImage.img.large}`}
                 loading="lazy"
                 onLoad={handleImageLoad}
               />

@@ -26,6 +26,7 @@ function App() {
   useEffect(() => {
     const flickrService = async () => {
       const data = await FlickrAPI.FlickrPhotos();
+
       setItemData(data.itemData);
     };
 
