@@ -48,6 +48,22 @@ const liveSets = [
     equipment: ["Ableton", "TouchDesigner"],
     style: ["Techno", "Electro", "Dub"],
   },
+  {
+    url: "https://youtu.be/3J_uA9aNSgY",
+    event: "Covid Room - 4K",
+    location: "Internet/Milan",
+    date: "29.03.2025",
+    equipment: ["Ableton", "TouchDesigner"],
+    style: ["Electro"],
+  },
+  {
+    url: "https://youtu.be/hB7pEOnCO8Q",
+    event: "Generator III",
+    location: "Berlin Area",
+    date: "12.04.2025",
+    equipment: ["Octatrack", "Machinedrum", "MicroQ"],
+    style: ["Techno", "Electro", "Dub"],
+  },
 ];
 
 export default liveSets;

@@ -2,10 +2,11 @@
 .live-grid {
   height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  /* grid-template-columns: 1fr; */
   gap: 10px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 @media (max-width: 768px) {
@@ -18,6 +19,7 @@
 .grid-item {
   border: 0.5px solid;
   display: flex;
+  min-height: 50%;
   flex-direction: column;
   justify-content: center;
 }
