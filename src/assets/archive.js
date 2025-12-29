@@ -328,6 +328,40 @@ const archive = [
     date: "07.09.24",
     img: "https://live.staticflickr.com/65535/53983112629_d408aeb757_o.jpg",
   },
+  {
+    type: "Live set, Light setup",
+    eventName: "GENERATOR",
+    location: {
+      venue: "Atomic Bunker",
+      city: "Stolzenhein",
+    },
+    otherArtist: [],
+    date: "12.04.25",
+    img: "",
+    url: "https://www.youtube.com/watch?v=hB7pEOnCO8Q",
+  },
+  {
+    type: "Visual Installation",
+    eventName: "Rapsodica",
+    location: {
+      venue: "Crak Bellmer",
+      city: "Berlin",
+    },
+    otherArtist: [],
+    date: "19.06.25",
+    img: "https://imgproxy.ra.co/_/quality:66/w:1442/rt:fill/aHR0cHM6Ly9pbWFnZXMucmEuY28vOTNmNTBlYjk2MzI0YmE0MThkNjc0ZDczM2ZiOGZmMDA4ZGQzM2FjNS5qcGc=",
+  },
+  {
+    type: "Live set, Ligh setup",
+    eventName: "GENERATOR",
+    location: {
+      venue: "Coppi",
+      city: "Berlin",
+    },
+    otherArtist: [],
+    date: "18.10.25",
+    img: "",
+  },
 ];
 
 export default archive;
