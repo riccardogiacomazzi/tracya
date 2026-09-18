@@ -64,6 +64,14 @@ const liveSets = [
     equipment: ["Octatrack", "Machinedrum", "MicroQ"],
     style: ["Techno", "Electro", "Dub"],
   },
+  {
+    url: "https://youtu.be/83anoLMmyt8?si=XS0zskO3Co1Mp5lB",
+    event: "Funkwerke",
+    location: "Berlin",
+    date: "25.07.2026",
+    equipment: ["Octatrack", "Machinedrum", "MicroQ"],
+    style: ["Techno", "Electro"],
+  },
 ];
 
 export default liveSets;
